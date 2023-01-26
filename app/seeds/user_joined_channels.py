@@ -8,7 +8,7 @@ def seed_join_table():
     channels = Channel.query.all()
 
     def randomChannel():
-        return channels[random.randint(0, len(channels))]
+        return channels[random.randint(0, len(channels)-1)]
 
     for user in users:
         channel = randomChannel()
