@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
 
 const LoginForm = () => {
@@ -9,6 +9,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory()
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -16,6 +17,7 @@ const LoginForm = () => {
     if (data) {
       setErrors(data);
     }
+    history.push('/channels')
   };
 
   const updateEmail = (e) => {
@@ -25,6 +27,19 @@ const LoginForm = () => {
   const updatePassword = (e) => {
     setPassword(e.target.value);
   };
+
+  const demoUser = async (e) => {
+    e.preventDefault();
+    // setEmail('demo@aa.io')
+    // setPassword('password')
+    let demoEmail = 'demo@aa.io'
+    let demoPw = 'password'
+    const demo = await dispatch(login(demoEmail, demoPw))
+    if (demo) {
+      setErrors(demo);
+    }
+    history.push('/channels')
+  }
 
   if (user) {
     return <Redirect to='/' />;
@@ -57,6 +72,7 @@ const LoginForm = () => {
           onChange={updatePassword}
         />
         <button type='submit'>Login</button>
+        <button className='single-login' onClick={demoUser}>Demo</button>
       </div>
     </form>
   );

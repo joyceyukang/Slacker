@@ -1,0 +1,23 @@
+.channel-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    justify-content: space-between;
+    padding: 40px 40px 40px 0px;
+}
+
+.name {
+    margin-top: 100px;
+}
+
+.channel-container {
+    display: grid;
+    grid-template-rows: 60% 20% 20%;
+}
+
+.whole-container {
+    display: grid;
+    grid-template-columns: 15% auto;
+    padding-right: 40px;
+}
