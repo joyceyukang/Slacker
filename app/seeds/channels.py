@@ -4,19 +4,19 @@ from app.models import db, Channel, environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_channels():
     hogwarts = Channel(
-        owner_id=4, name='Hogwarts-central', description='A chat for all members of Hogwarts.')
+        owner_id=3, name='Hogwarts-central', description='A chat for all members of Hogwarts.')
     gryffindor = Channel(
-        owner_id=5, name='Gryffindor', description='The best house')
+        owner_id=4, name='Gryffindor', description='The best house')
     hufflepuff = Channel(
-        owner_id=6, name='Hufflepuff', description='Integrity is the name of the game.')
+        owner_id=5, name='Hufflepuff', description='Integrity is the name of the game.')
     ravenclaw = Channel(
-        owner_id=7, name='Ravenclaw', description='The smartest crowd.'
+        owner_id=6, name='Ravenclaw', description='The smartest crowd.'
     )
     slytherin = Channel(
-        owner_id=8, name='Slytherin', description="We're going to take over hogwarts."
+        owner_id=7, name='Slytherin', description="We're going to take over hogwarts."
     )
     muggles = Channel(
-        owner_id=9, name='Muggles', description="Muggles unite!"
+        owner_id=8, name='Muggles', description="Muggles unite!"
     )
     
     all_channels = [hogwarts, gryffindor, hufflepuff, ravenclaw, slytherin, muggles]
