@@ -45,7 +45,7 @@ const ChannelDetails = () => {
                 </div>
                 <p className="chat-box">Messages would go here</p>
                 <div className="chat-box">
-                    {/* <Chat /> */}
+                    <Chat />
                 </div>
             </div>
         </div>
