@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "a559db82f66d6ca14a43fb0d41a5337f8e20e2f679ce26181fe7dcf0e4639abf"
+            "sha256": "9b7a7b416d73444a6260f63f90862658bc3c066439ff708237708b6ac0528fc2"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -31,6 +31,14 @@
             ],
             "markers": "python_version >= '3.7'",
             "version": "==0.22.1"
+        },
+        "cachelib": {
+            "hashes": [
+                "sha256:0b51af1913ad7ed21372864c0649e916bac30897160e68d1de0e3aac104df49b",
+                "sha256:c91e94f13a439356b19cf0945e773543918cfd09befcb6b6d572fc38f5eafe4b"
+            ],
+            "markers": "python_version >= '3.7'",
+            "version": "==0.10.1"
         },
         "click": {
             "hashes": [
@@ -87,6 +95,14 @@
             ],
             "index": "pypi",
             "version": "==3.0.1"
+        },
+        "flask-session": {
+            "hashes": [
+                "sha256:1e3f8a317005db72c831f85d884a5a9d23145f256c730d80b325a3150a22c3db",
+                "sha256:c9ed54321fa8c4ca0132ffd3369582759eda7252fb4b3bee480e690d1ba41f46"
+            ],
+            "index": "pypi",
+            "version": "==0.4.0"
         },
         "flask-socketio": {
             "hashes": [
@@ -306,7 +322,7 @@
                 "sha256:7454314a529bba20e745928601ffeaf101c1b5aca9a6c4e48ad397803d10ea0c",
                 "sha256:d8d8b072799c36cadcdcc2b40d2a560ce09797ab3d2d596b2ad519a5e4df19ae"
             ],
-            "markers": "python_version >= '3.6'",
+            "index": "pypi",
             "version": "==4.3.4"
         },
         "python-socketio": {
@@ -314,7 +330,7 @@
                 "sha256:92395062d9db3c13d30e7cdedaa0e1330bba78505645db695415f9a3c628d097",
                 "sha256:d9a9f047e6fdd306c852fbac36516f4b495c2096f8ad9ceb8803b8e5ff5622e3"
             ],
-            "markers": "python_version >= '3.6'",
+            "index": "pypi",
             "version": "==5.7.2"
         },
         "setuptools": {
