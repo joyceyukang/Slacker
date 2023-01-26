@@ -3,7 +3,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
+import NavBar from './components/Navigation/NavBar';
+import NavBarChannel from './components/Navigation/NavBarChannel'
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
@@ -29,15 +30,16 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
-      <ProtectedRoute path='/'>
-        <Channel />
-      </ProtectedRoute>
       <Switch>
+        <Route exact path='/'>
+          <NavBar loaded={loaded} />
+        </Route>
         <Route exact path='/login' >
+          <NavBar loaded={loaded} />
           <LoginForm />
         </Route>
         <Route exact path='/sign-up' >
+          <NavBar loaded={loaded} />
           <SignUpForm />
         </Route>
         <ProtectedRoute exact path='/users'  >
@@ -46,9 +48,14 @@ function App() {
         <ProtectedRoute exact path='/users/:userId'  >
           <User />
         </ProtectedRoute>
-        <Route path='/channels/:channelId'>
+        <Route exact path='/channels/:channelId'>
+          <NavBarChannel />
           <ChannelDetails />
         </Route>
+        <ProtectedRoute path='/channels'>
+          <NavBarChannel />
+          <Channel />
+        </ProtectedRoute>
         <Route path='/messages'>
           <Chat />
         </Route>

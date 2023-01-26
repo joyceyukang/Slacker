@@ -23,10 +23,12 @@ const Channel = () => {
 
     return (
         <div>
-            <h1>Hogwarts Academy</h1>
-            {userChannels.map(({id, name}) => (
-                <NavLink key={name} to={`/channels/${id}`}> #{name} </NavLink>
-            ))}
+            <h1 id="workspace">Hogwarts Academy</h1>
+            <div className="main-channels">
+                {userChannels.map(({ id, name }) => (
+                    <NavLink className="name" key={name} to={`/channels/${id}`}> #{name} </NavLink>
+                ))}
+            </div>
         </div>
     )
 
