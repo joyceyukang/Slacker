@@ -11,15 +11,17 @@ const NavBar = ({ loaded }) => {
     <div className='nav-container'>
       <div id='upper-navigation'>
         <div className='upper-left-home'>
-          <h2>Slacker</h2>
+          <NavLink id="nav-bar-main-logo" to='/'>
+            <h2>slacker</h2>
+          </NavLink>
         </div>
         <div className='upper-right-buttons'>
-            {!sessionUser && (
+          {!sessionUser && (
             <div className='nav-buttons-container'>
               <div className='nav-button'>
                 <NavLink exact to="/login">
                   <button className='login-button'>
-                  Log In
+                    Log In
                   </button>
                 </NavLink>
               </div>
@@ -29,14 +31,14 @@ const NavBar = ({ loaded }) => {
                     Sign Up
                   </button>
                 </NavLink>
-                </div>
               </div>
-            )}
-            {sessionUser && (
-              <div className='nav-buttons-container'>
+            </div>
+          )}
+          {sessionUser && (
+            <div className='nav-buttons-container'>
               <ProfileButton user={sessionUser} />
             </div>
-            )}
+          )}
         </div>
       </div>
     </div>

@@ -33,7 +33,7 @@ const Chat = () => {
     }
 
     return (user && (
-        <div>
+        <div className="main-chat-container">
             <div>
                 {messages.map((message, ind) => (
                     <div key={ind}>{`${message.user}: ${message.msg}`}</div>
