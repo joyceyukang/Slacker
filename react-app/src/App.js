@@ -12,6 +12,7 @@ import { authenticate } from './store/session';
 import Channel from './components/Channels';
 import ChannelDetails from './components/Channels/ChannelDetails';
 import Chat from './components/Socketio/Chat';
+import SingleChannel from './components/Channels/SingleChannel';
 
 function App() {
   const [loaded, setLoaded] = useState(false);

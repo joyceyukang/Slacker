@@ -3,31 +3,57 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { getAllChannels } from "../../store/channels";
 import { authenticate } from "../../store/session";
+import CreateChannel from "./CreateChannel";
+import OpenModalButton from '../OpenModalButton/index';
 
 const Channel = () => {
     const dispatch = useDispatch()
-
+    const allChannels = Object.values(useSelector(state => state.channel.allChannels))
     const currentUser = useSelector(state => state.session.user)
     let userChannels;
+    let channelsOwned
 
     if (currentUser) {
         userChannels = currentUser.channels_joined
+
+        if (allChannels) {
+            channelsOwned = allChannels.filter(channel => (
+                channel.owner_id === currentUser.id
+            ))
+        }
     }
+
+    console.log('HELLOOOOO', channelsOwned)
 
     useEffect(() => {
         dispatch(getAllChannels())
         dispatch(authenticate())
     }, [dispatch])
 
-    if (!currentUser) return null
+    if (!currentUser || !allChannels) return null
 
     return (
-        <div>
-            <h1 id="workspace">Hogwarts Academy</h1>
-            <div className="main-channels">
-                {userChannels.map(({ id, name }) => (
-                    <NavLink className="name" key={name} to={`/channels/${id}`}> #{name} </NavLink>
-                ))}
+        <div className="main-container">
+            <div className="sidebar-container">
+                <h2 id="title">Hogwarts Academy</h2>
+                <div className="create-edit-delete-channel">
+                    <p>Channels</p>
+                    <OpenModalButton
+                        buttonText="+"
+                        modalComponent={<CreateChannel />}
+                    />
+                </div>
+                <div className="main-channels">
+                    {userChannels.map(({ id, name }) => (
+                        <NavLink className="name" key={name} to={`/channels/${id}`}> #{name} </NavLink>
+                    ))}
+                    {channelsOwned.map(({ id, name }) => (
+                        <NavLink className="name" key={name} to={`/channels/${id}`}> #{name} </NavLink>
+                    ))}
+                </div>
+            </div>
+            <div className="channel-container">
+
             </div>
         </div>
     )

@@ -3,53 +3,90 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { getOneChannel } from "../../store/channels";
 import { getAllChannels } from "../../store/channels";
-import { useModal } from "../../context/Modal";
+import { authenticate } from "../../store/session"
 import Chat from "../Socketio/Chat";
+import CreateChannel from "./CreateChannel";
+import OpenModalButton from '../OpenModalButton/index';
 import './index.css'
+import SingleChannel from "./SingleChannel";
 
 const ChannelDetails = () => {
     const dispatch = useDispatch()
     const { channelId } = useParams()
+    const allChannels = Object.values(useSelector(state => state.channel.allChannels))
     const singleChannel = useSelector(state => state.channel.singleChannel)
     const currentUser = useSelector(state => state.session.user)
 
     let userChannels;
+    let channelsOwned;
+
+    console.log('CHANNEL ID', channelId)
 
     if (currentUser) {
-        userChannels = currentUser.channels_joined
+        userChannels = currentUser.channels_joined;
+        if (allChannels) {
+            console.log('OWNED CHANNELS')
+            channelsOwned = allChannels.filter(channel => (
+                channel.owner_id === currentUser.id
+            ))
+        }
     }
 
-    console.log(currentUser)
-
     useEffect(() => {
-        dispatch(getOneChannel(channelId))
+        console.log('USE EFFECT')
+        dispatch(authenticate())
         dispatch(getAllChannels())
+        dispatch(getOneChannel(channelId))
     }, [dispatch])
 
-    if (!currentUser || !singleChannel) return null
+    if (!currentUser || !singleChannel || !allChannels) return null
+
+    console.log('SINGLE CHANNEL ID', singleChannel)
 
     return (
-        <div className="whole-container">
-            <div className="main-channels">
-                {userChannels.map(({ id, name }) => (
-                    <NavLink className="name" key={name} to={`/channels/${id}`}> #{name} </NavLink>
-                ))}
+        <div className="main-container">
+            <div className="sidebar-container">
+                <h2 id="title">Hogwarts Academy</h2>
+                <div className="create-edit-delete-channel">
+                    <p>Channels</p>
+                    <OpenModalButton
+                        buttonText="+"
+                        modalComponent={<CreateChannel />}
+                    />
+                </div>
+                <div className="main-channels">
+                    {userChannels.map(({ id, name }) => (
+                        <NavLink className="name" key={id} to={`/channels/${id}`}> #{name} </NavLink>
+                    ))}
+                    {channelsOwned.map(({ id, name }) => (
+                        <span className="owners-channels">
+                            <NavLink className="name" key={id} to={`/channels/${id}`}> #{name} </NavLink>
+                            <span>
+                                <button>
+                                    edit
+                                </button>
+                                <button>
+                                    delete
+                                </button>
+                            </span>
+                        </span>
+                    ))}
+                </div>
             </div>
             <div className="channel-container">
                 <div className="channel-header">
                     <h2 className="upper-left">{singleChannel.name}</h2>
                     <div className="upper=right">
                         <p id='user-number'>{singleChannel.users_joined}</p>
-                        <p id='description'>{singleChannel.description}</p>
                     </div>
                 </div>
-                <p className="chat-box">Messages would go here</p>
+                <div className='message-container'>
+                </div>
                 <div className="chat-box">
-                    <Chat />
+                    {/* <Chat /> */}
                 </div>
             </div>
         </div>
-
     )
 
 }

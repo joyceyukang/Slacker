@@ -1,23 +1,110 @@
+
+.main-container {
+    display: flex;
+    /* flex-direction: row; */
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.sidebar-container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 40px;
+    height: 100%;
+    width: 300px;
+    border-right: solid #333333 1px;
+    background-color: #1b1b1b;
+    color: white;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    margin: 0px;
+}
+
+.channel-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: calc(100% - 300px);
+    justify-content: space-between;
+    position: relative;
+    padding: 0px 20px 20px 20px;
+    background-color: #222222;
+    color: white
+}
+
 .channel-header {
     display: flex;
     flex-direction: row;
     align-items: center;
-
     justify-content: space-between;
-    padding: 40px 40px 40px 0px;
+    padding-right: 40px;
+}
+
+.main-channels {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .name {
-    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    background-color: transparent;
+    color: white;
+    border: none;
+}
+.sidebar-container-home {
+    display: flex;
+    flex-direction: column;
+    /* padding-left: 40px; */
+    height: 100%;
+    width: 300px;
+    align-items: flex-start;
 }
 
-.channel-container {
-    display: grid;
-    grid-template-rows: 60% 20% 20%;
+#workspace {
+    display: flex;
 }
 
-.whole-container {
-    display: grid;
-    grid-template-columns: 15% auto;
-    padding-right: 40px;
+.chat-box {
+    display: flex;
+    padding-bottom: 50px;
+    width: 100%;
+}
+
+.message-container {
+    height: 200px;
+}
+
+.create-edit-delete-channel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.loginSign-button {
+    margin-right: 40px;
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 25px;
+}
+
+.loginSign-button:hover {
+    cursor: pointer;
+    transition: 0.5s;
+    background-color: gray;
+    border-radius: 5px;
+}
+
+.owners-channels {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

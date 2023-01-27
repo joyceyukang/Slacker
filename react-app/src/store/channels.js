@@ -102,7 +102,6 @@ const channel = (state = initialState, action) => {
         case LOAD_CHANNELS:
             newState = { ...state };
             newAllChannels = {...state.allChannels}
-            console.log('HELLO---',action.channels.channels)
             action.channels.channels.forEach(channel => {
                 newAllChannels[channel.id] = channel;
             })
