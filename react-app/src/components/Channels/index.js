@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { getAllChannels } from "../../store/channels";
 import { authenticate } from "../../store/session";
 import CreateChannel from "./CreateChannel";
+import EditChannel from "./EditChannel";
 import OpenModalButton from '../OpenModalButton/index';
 
 const Channel = () => {
