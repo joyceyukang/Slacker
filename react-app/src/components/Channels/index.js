@@ -23,8 +23,6 @@ const Channel = () => {
         }
     }
 
-    console.log('HELLOOOOO', channelsOwned)
-
     useEffect(() => {
         dispatch(getAllChannels())
         dispatch(authenticate())
@@ -45,10 +43,21 @@ const Channel = () => {
                 </div>
                 <div className="main-channels">
                     {userChannels.map(({ id, name }) => (
-                        <NavLink className="name" key={name} to={`/channels/${id}`}> #{name} </NavLink>
+                        <NavLink className="name" key={id} to={`/channels/${id}`}> #{name} </NavLink>
                     ))}
                     {channelsOwned.map(({ id, name }) => (
-                        <NavLink className="name" key={name} to={`/channels/${id}`}> #{name} </NavLink>
+                        <span className="owners-channels">
+                            <NavLink className="name" key={id} to={`/channels/${id}`}> #{name} </NavLink>
+                            <span>
+                                <OpenModalButton
+                                    buttonText="edit"
+                                    modalComponent={<EditChannel id={id}/>}
+                                />
+                                <button>
+                                    delete
+                                </button>
+                            </span>
+                        </span>
                     ))}
                 </div>
             </div>

@@ -1,14 +1,13 @@
 import { useParams, NavLink, useHistory } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { getOneChannel } from "../../store/channels";
-import { getAllChannels } from "../../store/channels";
+import channel, { getOneChannel, getAllChannels, deleteChannel } from "../../store/channels";
 import { authenticate } from "../../store/session"
 import Chat from "../Socketio/Chat";
 import CreateChannel from "./CreateChannel";
 import OpenModalButton from '../OpenModalButton/index';
 import './index.css'
-import SingleChannel from "./SingleChannel";
+import EditChannel from "./EditChannel";
 
 const ChannelDetails = () => {
     const dispatch = useDispatch()
@@ -16,6 +15,7 @@ const ChannelDetails = () => {
     const allChannels = Object.values(useSelector(state => state.channel.allChannels))
     const singleChannel = useSelector(state => state.channel.singleChannel)
     const currentUser = useSelector(state => state.session.user)
+    const history = useHistory()
 
     let userChannels;
     let channelsOwned;
@@ -32,12 +32,20 @@ const ChannelDetails = () => {
         }
     }
 
+    const removeChannel = async () => {
+        // console.log("BUSINESS ID",business.id)
+        await dispatch(deleteChannel(channelId))
+        await dispatch(authenticate())
+        history.push('/channels')
+        alert('Channel Deleted')
+    }
+
     useEffect(() => {
         console.log('USE EFFECT')
         dispatch(authenticate())
         dispatch(getAllChannels())
         dispatch(getOneChannel(channelId))
-    }, [dispatch])
+    }, [dispatch, channelId])
 
     if (!currentUser || !singleChannel || !allChannels) return null
 
@@ -62,10 +70,11 @@ const ChannelDetails = () => {
                         <span className="owners-channels">
                             <NavLink className="name" key={id} to={`/channels/${id}`}> #{name} </NavLink>
                             <span>
-                                <button>
-                                    edit
-                                </button>
-                                <button>
+                                <OpenModalButton
+                                    buttonText="edit"
+                                    modalComponent={<EditChannel id={id} />}
+                                />
+                                <button onClick={removeChannel}>
                                     delete
                                 </button>
                             </span>
