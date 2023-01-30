@@ -12,14 +12,14 @@ const store = configureStore();
 
 function Root() {
   return (
-    <ModalProvider>
-      <Provider store={store}>
+    <Provider store={store}>
+      <ModalProvider>
         <BrowserRouter>
           <App />
           <Modal />
         </BrowserRouter>
-      </Provider>
-    </ModalProvider>
+      </ModalProvider>
+    </Provider>
   );
 }
 

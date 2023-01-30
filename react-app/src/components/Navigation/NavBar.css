@@ -1,18 +1,26 @@
 #nav-bar-main-logo {
+    display: flex;
+    flex-direction: row;
     text-decoration: none;
+    color: white;
+    align-items: center;
+    color: white;
+}
+
+.fa-slack {
+    margin-top: 5px;
+    margin-right: 10px;
+    font-size: x-large;
     color: white;
 }
 
 .nav-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
     margin: 0px;
-    padding: 0px 40px 0px;
-    height: 70px;
     width: 100%;
-    background-color: #400d40;
-    border-bottom: lightgray .5px solid;
+    background-color: rgb(224, 30, 90);
+    border-bottom: black .5px solid;
     z-index: 10;
 }
 
@@ -20,6 +28,7 @@
     display: grid;
     grid-template-columns: 45fr 45fr;
     width: 100%;
+    height: 50px;
 }
 
 .upper-right-buttons {
@@ -28,13 +37,14 @@
     justify-content: flex-end;
     align-items: center;
     width: 100%;
+    height: 50px;
 }
 
 .nav-buttons-container {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    width: 30%
+    width: 30%;
 }
 
 .upper-left-home {
@@ -42,17 +52,14 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    margin-right: 40px;
+    margin-left: 40px;
     color: white;
+    height: 50px;
 }
 
 .nav-button-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-}
-.nav-button {
-    margin:0px 10px;
 }
 
 .login-button {
@@ -65,6 +72,7 @@
     width: 100px;
     transition: border 0.5s;
     font-size: 16px;
+    margin-right: 20px;
 }
 
 .login-button:hover{
@@ -81,6 +89,7 @@
     padding: 4px;
     transition: border 0.5s;
     font-size: 16px;
+    margin-right: 40px;
 }
 
 .signup-button:hover {
@@ -129,26 +138,15 @@ a:link {
 }
 
 .profile-button {
-    height: 50px;
-    width: 50px;
-    border-radius: 100%;
-    border-style: hidden;
+    width: 35px;
+    height: 35px;
+    background-color: transparent;
+    border: solid white;
+    color: white;
 }
 
-.fa-square-user {
-    font-size: 50px;
-    height: 20px;
-    width: 20px;
+.profile-button:hover {
+    border: solid white 5px;
+    transition-duration: 0.5s;
 }
 
-.logout {
-    background: none;
-    border: none;
-    width: 80px;
-    height: 30px;
-}
-
-.logout:hover {
-    background-color: #dcd7d7;
-    border-radius: 5px;
-}

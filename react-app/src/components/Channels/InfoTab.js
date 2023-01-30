@@ -3,12 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { getOneChannel, getAllChannels, deleteChannel } from "../../store/channels";
 import { authenticate } from "../../store/session"
-import Chat from "../Socketio/Chat";
 import CreateChannel from "./CreateChannel";
+import EditChannel from "./EditChannel"
 import OpenModalButton from '../OpenModalButton/index';
 import './index.css'
+import './InfoTab.css'
 
-const ChannelDetails = () => {
+const InfoTab = () => {
     const dispatch = useDispatch()
     const { channelId } = useParams()
     const allChannels = Object.values(useSelector(state => state.channel.allChannels))
@@ -31,6 +32,24 @@ const ChannelDetails = () => {
                 channel.owner_id === currentUser.id
             ))
         }
+    }
+
+    // These are pushing the channels id to an array so that I can add an edit button in the channels descriptions
+    if (channelsOwned) {
+        channelsOwned.forEach(channel => {
+            channelsOwnedId.push(channel.id)
+        })
+    }
+
+    // Delete a Channel
+    const deleteChannels = async (e) => {
+        e.preventDefault()
+
+        dispatch(deleteChannel(channelId)).then(
+            history.push('/channels')
+        )
+        dispatch(authenticate())
+        alert('Channel Deleted')
     }
 
     // This use effect is dispatching the user, all channels, and getting one channel for the information. 
@@ -64,27 +83,32 @@ const ChannelDetails = () => {
                         <NavLink className="name" key={id} to={`/channels/${id}`}> #{name} </NavLink>
                     ))}
                     {channelsOwned.map(({ id, name }) => (
-                        <span key={name} className="owners-channels">
-                            <NavLink className="name" key={id} to={`/channels/${id}`}> #{name} </NavLink>
-                        </span>
+                        <NavLink className="name" key={id} to={`/channels/${id}`}> #{name} </NavLink>
                     ))}
                 </div>
             </div>
-            <div className="channel-container">
+            <div className="channel-info-container">
                 <div className="channel-header">
                     <h2 className="upper-left">
-                        <NavLink key={channelId} to={`/channels/${channelId}/info`}> 
-                           #{singleChannel.name}
-                        </NavLink>
+                        #{singleChannel.name}
                     </h2>
                     <div className="upper=right">
                         <p id='user-number'>{singleChannel.users_joined}</p>
                     </div>
                 </div>
-                <div className='message-container'>
+                <div className='channel-description'>
+                    <h3>Description</h3>
+                    <p>{singleChannel.description}</p>
                 </div>
-                <div className="chat-box">
-                    <Chat />
+                <div className="edit-delete-buttons">
+                    <span>
+                        {channelsOwnedId.includes(+channelId) ?
+                            <NavLink className="edit" key={channelId} to={`/channels/${channelId}/edit`}>Edit</NavLink> : null}
+                    </span>
+                    <span>
+                        {channelsOwnedId.includes(+channelId) ?
+                            <NavLink className="delete" key={singleChannel.name} onClick={deleteChannels} to='/channels'>Delete</NavLink> : null}
+                    </span>
                 </div>
             </div>
         </div>
@@ -92,4 +116,4 @@ const ChannelDetails = () => {
 
 }
 
-export default ChannelDetails
+export default InfoTab;

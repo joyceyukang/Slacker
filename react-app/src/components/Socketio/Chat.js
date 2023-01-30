@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { io } from 'socket.io-client';
+import './Chat.css'
 let socket;
 
 const Chat = () => {
@@ -33,14 +34,15 @@ const Chat = () => {
     }
 
     return (user && (
-        <div className="main-chat-container">
-            <div>
+        <div className="chat-container">
+            <div className="messages-sent">
                 {messages.map((message, ind) => (
                     <div key={ind}>{`${message.user}: ${message.msg}`}</div>
                 ))}
             </div>
             <form onSubmit={sendChat}>
                 <input
+                    className="input-message"
                     value={chatInput}
                     onChange={updateChatInput}
                 />

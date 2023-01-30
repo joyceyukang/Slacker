@@ -10,18 +10,22 @@
 .sidebar-container {
     display: flex;
     flex-direction: column;
-    padding-left: 40px;
     height: 100%;
     width: 300px;
-    border-right: solid #333333 1px;
-    background-color: #1b1b1b;
+    border-right: solid black 1px;
+    background-color: rgb(54, 197, 240);
     color: white;
 }
 
 .title {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    margin: 0px;
+    justify-content: space-between;
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-bottom: 20px;
+    border-bottom: solid black 1px;
 }
 
 .channel-container {
@@ -31,8 +35,7 @@
     width: calc(100% - 300px);
     justify-content: space-between;
     position: relative;
-    padding: 0px 20px 20px 20px;
-    background-color: #222222;
+    background-color: rgb(236, 178, 46);
     color: white
 }
 
@@ -42,12 +45,15 @@
     align-items: center;
     justify-content: space-between;
     padding-right: 40px;
+    padding-left: 40px;
+    border-bottom: solid black 1px;
 }
 
 .main-channels {
     display: flex;
     flex-direction: column;
     height: 100%;
+    padding-left: 40px;
 }
 
 .name {
@@ -71,21 +77,17 @@
     display: flex;
 }
 
-.chat-box {
-    display: flex;
-    padding-bottom: 50px;
-    width: 100%;
-}
-
 .message-container {
-    height: 200px;
+    height: 100%;
+    padding: 0 25px 30px
 }
 
-.create-edit-delete-channel {
+.create-channel {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding-left: 40px;
 }
 
 .loginSign-button {
@@ -107,4 +109,98 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.login-button {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    border-radius: 4px;
+    padding: 4px;
+    height: 38px;
+    width: 100px;
+    transition: border 0.5s;
+    font-size: 16px;
+}
+
+.login-button:hover{
+    border: 2.5px solid white;
+}
+
+.signup-button {
+    background-color: white;
+    color: #400d40;
+    border: 1px solid white;
+    height: 38px;
+    width: 100px;
+    border-radius: 4px;
+    padding: 4px;
+    transition: border 0.5s;
+    font-size: 16px;
+}
+
+.signup-button:hover {
+    border: 2.5px solid #400d40;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+.hidden {
+    display: none
+}
+
+.info-dropdown {
+    position: absolute;
+    margin-top: 10px;
+    z-index: 10;
+}
+
+.dropdown-menu {
+    align-items: center;
+    align-content: flex-end;
+    background-color: rgb(46, 182, 125);
+    border-radius: .25rem;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    gap: 0.25rem;
+    height: auto;
+    list-style: none;
+    padding: 0.75rem;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.25rem);
+}
+
+.dropdown-menu .user-info {
+    display: flex;
+    flex: column;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 30px;
+}
+
+.logout {
+    background: none;
+    border: none;
+    width: 80px;
+    height: 30px;
+    color: white;
+}
+
+.logout:hover {
+   font-weight: bold;
+}
+
+.edit-input {
+    padding-left: 40px;
 }

@@ -1,0 +1,43 @@
+.edit-delete-buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.main-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+
+.channel-info-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: calc(100% - 300px);
+    position: relative;
+    background-color: rgb(236, 178, 46);
+    color: white
+}
+
+.channel-description {
+    padding-left: 40px;
+    color: #4a154b;
+}
+
+.edit-delete-buttons {
+    padding-left: 40px;
+}
+
+.edit {
+    margin-right: 10px;
+    color:#4a154b;
+    font-weight: bold;
+}
+
+.delete {
+    margin-left: 10px;
+    color:#4a154b;
+    font-weight: bold;
+}
