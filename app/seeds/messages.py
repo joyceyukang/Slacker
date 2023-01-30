@@ -3,7 +3,7 @@ from app.models import db, Message, environment, SCHEMA
 
 def seed_messages():
     message1 = Message(
-        owner_id=3, channel_id=1,  message='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus, nisl vel lacinia molestie, mauris metus iaculis ligula, vel viverra orci lacus sed massa. ')
+        owner_id=3, channel_id=6,  message='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus, nisl vel lacinia molestie, mauris metus iaculis ligula, vel viverra orci lacus sed massa. ')
     message2 = Message(
         owner_id=4, channel_id=2,  message='Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent ultricies leo ultrices sem euismod maximus.')
     message3 = Message(
@@ -17,13 +17,12 @@ def seed_messages():
     message6 = Message(
         owner_id=8, channel_id=5, message="Nulla quis erat in diam pulvinar suscipit eget sit amet diam. Duis cursus magna in nunc cursus, sed consequat massa accumsan. Aenean urna lectus, luctus in leo et, maximus convallis ipsum. Integer id justo sodales, auctor orci ac, bibendum nibh."
     )
-    
+
     all_messages = [message1, message2, message3, mesage4, message5, message6]
 
     for message in all_messages:
         db.session.add(message)
     db.session.commit()
-
 
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
@@ -34,8 +33,9 @@ def seed_messages():
 # it will reset the primary keys for you as well.
 def undo_messages():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.messages RESTART IDENTITY CASCADE;")
+        db.session.execute(
+            f"TRUNCATE table {SCHEMA}.messages RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM messages")
-        
+
     db.session.commit()
