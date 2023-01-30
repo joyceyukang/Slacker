@@ -23,10 +23,10 @@ def seed():
         undo_join_table()
         undo_channels()
         undo_users()
-    seed_messages()
     seed_users()
     seed_channels()
     seed_join_table()
+    seed_messages()
     # Add other seed functions here
 
 
