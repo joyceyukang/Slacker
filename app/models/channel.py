@@ -21,7 +21,7 @@ class Channel(db.Model):
     # Many to one: Many channels belong to a user
     user = db.relationship('User', back_populates='channels')
     # One to Many: One channel has many messages
-    messages = db.relationship('Message', back_populates='channels')
+    messages = db.relationship('Message', back_populates='channels', cascade='all, delete-orphan')
 
     # join table for channels that the user joined
     channels_joined = db.relationship("User",
