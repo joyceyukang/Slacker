@@ -39,7 +39,7 @@ function ProfileButton({ user }) {
     return (
         <div>
             <button className="profile-button" onClick={openMenu}>
-                <i className="fa-solid fa-square-user"/> 
+                <i className="fa-sharp fa-solid fa-user"></i>
             </button>
             <ul className={ulClassName} ref={ulRef}>
                 <div className="dropdown-menu">

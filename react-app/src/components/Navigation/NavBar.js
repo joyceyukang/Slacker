@@ -11,9 +11,17 @@ const NavBar = ({ loaded }) => {
     <div className='nav-container'>
       <div id='upper-navigation'>
         <div className='upper-left-home'>
-          <NavLink id="nav-bar-main-logo" to='/'>
-            <h2>slacker</h2>
-          </NavLink>
+          {sessionUser ?
+            <NavLink id="nav-bar-main-logo" to='/channels'>
+              <i className="fa-brands fa-slack"></i>
+              <h2>slacker</h2>
+            </NavLink>
+            :
+            <NavLink id="nav-bar-main-logo" to='/'>
+              <i class="fa-brands fa-slack"></i>
+              <h2>slacker</h2>
+            </NavLink>
+          }
         </div>
         <div className='upper-right-buttons'>
           {!sessionUser && (

@@ -1,5 +1,8 @@
 import React from 'react';
 import { useModal } from '../../context/Modal';
+import { useDispatch } from 'react-redux';
+import { getAllChannels } from '../../store/channels';
+import { useEffect } from 'react';
 
 function OpenModalButton({
   modalComponent, // component to render inside the modal
@@ -7,6 +10,7 @@ function OpenModalButton({
   onButtonClick, // optional: callback function that will be called once the button that opens the modal is clicked
   onModalClose // optional: callback function that will be called once the modal is closed
 }) {
+  const dispatch = useDispatch()
   const { setModalContent, setOnModalClose } = useModal();
 
   const onClick = () => {

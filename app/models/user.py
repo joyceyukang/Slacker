@@ -17,6 +17,8 @@ class User(db.Model, UserMixin):
 
     # One to many: User has many channels
     channels = db.relationship('Channel', back_populates='user', cascade='all, delete-orphan')
+    #  One to many: User has many messages
+    messages = db.relationship('Message', back_populates='user', cascade='all, delete-orphan')
 
     # join table for channels that the user joined
     user_channels = db.relationship("Channel",
@@ -41,12 +43,12 @@ class User(db.Model, UserMixin):
             id,
             username,
             email,
-            channels_joined
+            channels_joined,
         }
         '''
         return {
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'channels_joined': [channel.to_dict() for channel in self.user_channels]
+            'channels_joined': [channel.to_dict() for channel in self.user_channels],
         }

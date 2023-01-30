@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { createChannel, getAllChannels } from '../../store/channels';
 import { useModal } from '../../context/Modal';
+import '../../context/Modal.css'
 
 
 const CreateChannel = () => {
@@ -41,8 +42,6 @@ const CreateChannel = () => {
     const validate = (values) => {
         const errors = {};
 
-        // console.log(values)
-
         if (!values.name) {
             errors.name = "Name is required."
         }
@@ -53,40 +52,28 @@ const CreateChannel = () => {
         return errors;
     }
 
-    //    reset();
-    // const reset = () => {
-    //     setname('');
-    //     setCity('');
-    //     setState('');
-    //     setCountry('');
-    //     setName('');
-    //     setDescription('');
-    //     setPrice('');
-    //     setImageUrl('');
-    // }
-
     return (
         <div className="inputBox">
-            <h1>Create a Channel</h1>
+            <h2 id='create-header'>Create a Channel</h2>
             <form className="create-input" onSubmit={handleSubmit}>
-                <h5>Channel Name</h5>
+                <h5 className='input-titles'>Channel Name</h5>
                 <input
                     type="text"
                     onChange={(e) => setName(e.target.value)}
                     value={name}
                     placeholder="Name"
                     name="name"
-                // required
+                    required
                 />
                 <p>{formErrors.name}</p>
-                <h5>Description</h5>
+                <h5 className='input-titles'>Description</h5>
                 <input
                     type="text"
                     onChange={(e) => setDescription(e.target.value)}
                     value={description}
                     placeholder="Description"
                     name="description"
-                // required
+                    required
                 />
                 <p>{formErrors.description}</p>
                 {sessionUser ? <button className="submit" type="submit">Submit</button> :

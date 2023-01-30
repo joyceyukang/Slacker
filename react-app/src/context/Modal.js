@@ -1,6 +1,9 @@
 import React, { useRef, useState, useContext } from 'react';
 import ReactDOM from 'react-dom';
 import './Modal.css';
+import { useDispatch } from 'react-redux';
+import { getAllChannels } from '../store/channels';
+import { Redirect, useHistory } from 'react-router-dom';
 
 const ModalContext = React.createContext();
 
@@ -9,8 +12,10 @@ export function ModalProvider({ children }) {
   const [modalContent, setModalContent] = useState(null);
   // callback function that will be called when modal is closing
   const [onModalClose, setOnModalClose] = useState(null);
+  const dispatch = useDispatch();
+  const history = useHistory()
 
-  const closeModal = () => {
+  const closeModal = async () => {
     setModalContent(null); // clear the modal contents
     // If callback function is truthy, call the callback function and reset it
     // to null:
@@ -18,6 +23,11 @@ export function ModalProvider({ children }) {
       setOnModalClose(null);
       onModalClose();
     }
+    await dispatch(getAllChannels()).then(
+      (res) => {
+        <Redirect to='/channels' />
+      }
+    )
   };
 
   const contextValue = {

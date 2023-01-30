@@ -1,25 +1,23 @@
 from app.models import db, Channel, environment, SCHEMA
 
-
-# Adds a demo user, you can add other users here if you want
 def seed_channels():
-    hogwarts = Channel(
-        owner_id=3, name='Hogwarts-central', description='A chat for all members of Hogwarts.')
-    gryffindor = Channel(
-        owner_id=4, name='Gryffindor', description='The best house')
-    hufflepuff = Channel(
-        owner_id=5, name='Hufflepuff', description='Integrity is the name of the game.')
-    ravenclaw = Channel(
-        owner_id=6, name='Ravenclaw', description='The smartest crowd.'
+    slackerCentral = Channel(
+        owner_id=3, name='Slackers-central', description='A chat for all members of Slacker.')
+    inspiration = Channel(
+        owner_id=4, name='Inspirational-quotes', description='Need some inspiration? We can help!')
+    scheduler = Channel(
+        owner_id=5, name='Schedules Galore', description='Have too many tasks? Slacking on those tasks? We can make a schedule for you.')
+    tips = Channel(
+        owner_id=6, name='Tips', description='Some neat tips and tricks to not be a slacker!'
     )
-    slytherin = Channel(
-        owner_id=7, name='Slytherin', description="We're going to take over hogwarts."
+    distraction = Channel(
+        owner_id=7, name='Distractions', description="When you don't want to do anything we talk about everything!"
     )
-    muggles = Channel(
-        owner_id=8, name='Muggles', description="Muggles unite!"
+    furniture = Channel(
+        owner_id=8, name='Lazy Furniture', description="We talk about the up to date recs for the best furniture to relax on when you feel like slacking!!"
     )
     
-    all_channels = [hogwarts, gryffindor, hufflepuff, ravenclaw, slytherin, muggles]
+    all_channels = [slackerCentral, inspiration, scheduler, tips, distraction, furniture]
 
     for channel in all_channels:
         db.session.add(channel)
