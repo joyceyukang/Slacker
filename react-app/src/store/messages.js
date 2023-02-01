@@ -1,3 +1,5 @@
+import channel from "./channels"
+
 const LOAD_MESSAGES = 'messages/LOAD'
 const CREATE_MESSAGES = 'messages/CREATE'
 const UPDATE_MESSAGES = 'messages/UPDATE'
@@ -31,32 +33,42 @@ const remove = messageId => ({
 })
 
 // Get a single message
-export const getOneMessage = (id) => async dispatch => {
-    const response = await fetch(`/api/messages/${id}`);
-    if (response.ok){
-        const messages = await response.json()
-        dispatch(getOne(messages))
-        return messages
-    }
-}
+// export const getOneMessage = (id) => async dispatch => {
+//     const response = await fetch(`/api/messages/${id}`);
+//     if (response.ok){
+//         const messages = await response.json()
+//         dispatch(getOne(messages))
+//         return messages
+//     }
+// }
 
 // Get all existing messages
-export const getAllMessages = () => async dispatch => {
-    const response = await fetch('/api/messages/')
+// export const getAllMessages = () => async dispatch => {
+//     const response = await fetch('/api/messages/')
 
-    if (response.ok) {
-        const messages = await response.json();
-        dispatch(load(messages))
-        return messages;
+//     if (response.ok) {
+//         const messages = await response.json();
+//         dispatch(load(messages))
+//         return messages;
+//     }
+// }
+
+export const getAllChannelMessages = (channelId) => async dispatch => {
+    const response = await fetch(`/api/messages/${channelId}/messages`)
+
+    if(response.ok) {
+        const allMessages = await response.json()
+        dispatch(load(allMessages))
+        return allMessages
     }
 }
 
 // Create a message
-export const createMessage = (message, channelId) => async dispatch => {
-    const response = await fetch(`/api/messages/${channelId}/new`, {
+export const createMessage = (payload) => async dispatch => {
+    const response = await fetch(`/api/messages/new`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(message)
+        body: JSON.stringify(payload)
     })
     
     if (response.ok) {
@@ -67,11 +79,11 @@ export const createMessage = (message, channelId) => async dispatch => {
 }
 
 // Update an exisiting message
-export const editmessage = (message, id) => async dispatch => {
-    const response = await fetch(`/api/messages/${id}`, {
+export const editMessage = (messageId, payload) => async dispatch => {
+    const response = await fetch(`/api/messages/${messageId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(message)
+        body: JSON.stringify(payload)
     })
 
     if(response.ok) {
@@ -81,56 +93,62 @@ export const editmessage = (message, id) => async dispatch => {
     }
 }
 
-export const deletemessage = (id) => async dispatch => {
-    const response = await fetch(`/api/messages/${id}`, {
+export const deleteMessage = (messageId) => async dispatch => {
+    const response = await fetch(`/api/messages/${messageId}`, {
         method: 'DELETE'
     })
 
     if(response.ok) {
         await response.json()
-        dispatch(remove(id))
+        dispatch(remove(messageId))
     }
 }
 
-const initialState = { allMessages: {}, singleMessage: {} }
+const initialState = { allChannelMessages: {}, singleChannelMessage: {} }
 
-const message = (state = initialState, action) => {
+const messages = (state = initialState, action) => {
     let newState;
-    let newAllMessages;
-    let newSingleMessage;
+    let newAllChannelMessages;
+    let newSingleChannelMessage;
     switch (action.type) {
         case LOAD_MESSAGES:
             newState = { ...state };
-            newAllMessages = {...state.allMessages}
-            action.messages.messages.forEach(message => {
-                newAllMessages[message.id] = message;
+            newAllChannelMessages = {...state.allChannelMessages}
+            action.messages.channelMessages.forEach(message => {
+                newAllChannelMessages[message.id] = message;
             })
-            newState.allMessages = newAllMessages;
+            newState.allChannelMessages = newAllChannelMessages;
             return newState;
         case CREATE_MESSAGES:
             newState = { ...state };
-            newSingleMessage = action.message
-            newState.allMessages[newSingleMessage.id] = newSingleMessage
+            newSingleChannelMessage = action.message
+            newState.allChannelMessages[newSingleChannelMessage.id] = newSingleChannelMessage
             return newState;
         case GET_ONE_MESSAGE:
             newState = { ...state };
-            newSingleMessage = action.message
-            newState.singleMessage = newSingleMessage
+            newSingleChannelMessage = action.message
+            newState.singleChannelMessage = newSingleChannelMessage
             return newState;
         case UPDATE_MESSAGES:
-            newState = {...state};
-            newSingleMessage = action.message
-            newState.allMessages[newSingleMessage.id] = newSingleMessage;
+            // console.log("NEW STATE",newState)
+            newSingleChannelMessage = action.message
+            newState = {
+                allChannelMessages: {...state.allChannelMessages},
+                singleChannelMessage: {...state.singleChannelMessage}
+            };
+            // console.log("NEW MESSAGE",newSingleChannelMessage)
+            newState.allChannelMessages[newSingleChannelMessage.id] = newSingleChannelMessage;
+            // console.log("NEW STATE AFTER UPDATING MESSAGE", newState)
             return newState;
         case DELETE_MESSAGES:
             newState = {...state};
-            newAllMessages = {...state.allMessages};
-            delete newAllMessages[action.messageId]
-            newState.allMessages = newAllMessages;
+            newAllChannelMessages = {...state.allChannelMessages};
+            delete newAllChannelMessages[action.messageId]
+            newState.allChannelMessages = newAllChannelMessages;
             return newState;
         default:
             return state
     }
 }
 
-export default message
+export default messages

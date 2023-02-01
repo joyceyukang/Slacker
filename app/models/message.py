@@ -10,10 +10,9 @@ class Message(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    owner_id = db.Column(db.Integer, db.ForeignKey(
-        add_prefix_for_prod("users.id")), nullable=False)
+    owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     channel_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("channels.id")), nullable=False)
-    message = db.Column(db.String(2000), nullable=False)
+    input = db.Column(db.String(2000), nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), default=func.now())
 
@@ -29,12 +28,12 @@ class Message(db.Model):
             id,
             owner_id,
             channel_id
-            message,
+            input,
         }
         """
         return {
             "id": self.id,
             "owner_id": self.owner_id,
             "channel_id": self.channel_id,
-            "message": self.message
+            "input": self.input
         }

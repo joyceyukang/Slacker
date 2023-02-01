@@ -2,11 +2,14 @@ import { useParams, NavLink, useHistory } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { getOneChannel, getAllChannels, deleteChannel } from "../../store/channels";
+import { getAllChannelMessages } from "../../store/messages";
 import { authenticate } from "../../store/session"
 import Chat from "../Socketio/Chat";
 import CreateChannel from "./CreateChannel";
 import OpenModalButton from '../OpenModalButton/index';
+import { io } from 'socket.io-client';
 import './index.css'
+let socket;
 
 const ChannelDetails = () => {
     const dispatch = useDispatch()
@@ -19,7 +22,6 @@ const ChannelDetails = () => {
     // To display all channels the user has joined or the user owns
     let userChannels;
     let channelsOwned;
-    let channelsOwnedId = [];
 
     // If there is a user then we will set userChannels to a list of the channels joined.
     if (currentUser) {
@@ -34,10 +36,11 @@ const ChannelDetails = () => {
     }
 
     // This use effect is dispatching the user, all channels, and getting one channel for the information. 
-    useEffect(() => {
-        dispatch(authenticate())
-        dispatch(getAllChannels())
-        dispatch(getOneChannel(channelId))
+    useEffect( async () => {
+        await dispatch(authenticate())
+        await dispatch(getAllChannels())
+        await dispatch(getOneChannel(channelId))
+        // await  dispatch(getAllChannelMessages(channelId))
     }, [dispatch, channelId])
 
     if (!currentUser || !singleChannel || !allChannels) return null
@@ -60,8 +63,8 @@ const ChannelDetails = () => {
                     />
                 </div>
                 <div className="main-channels">
-                    {userChannels.map(({ id, name }) => (
-                        <NavLink className="name" key={id} to={`/channels/${id}`}> #{name} </NavLink>
+                    {userChannels.map(({id, name}) => (
+                            <NavLink className="name" key={id} to={`/channels/${id}`}> #{name} </NavLink>
                     ))}
                     {channelsOwned.map(({ id, name }) => (
                         <span key={name} className="owners-channels">
@@ -84,7 +87,7 @@ const ChannelDetails = () => {
                 <div className='message-container'>
                 </div>
                 <div className="chat-box">
-                    <Chat />
+                    <Chat channelId={channelId} />
                 </div>
             </div>
         </div>

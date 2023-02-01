@@ -49,7 +49,10 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute exact path='/channels' component={Channel} />
-        <ProtectedRoute exact path='/channels/:channelId' component={ChannelDetails} />
+        <ProtectedRoute exact path='/channels/:channelId' >
+          <ChannelDetails />
+          {/* <Chat /> */}
+        </ProtectedRoute>
         <ProtectedRoute exact path='/channels/:channelId/info' component={InfoTab} />
         <ProtectedRoute exact path='/channels/:channelId/edit' component={EditChannel} />
         <Route path='/messages'>
