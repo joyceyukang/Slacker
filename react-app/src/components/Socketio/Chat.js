@@ -38,7 +38,7 @@ const Chat = ({ channelId }) => {
         socket.emit("join", channelId)
 
         socket.on("chat", (chat) => {
-            // seteditContent(editContent => [...editContent, chat])
+
         })
         console.log('hi im here before the dispatch')
         dispatch(getAllChannelMessages(channelId))
@@ -60,7 +60,7 @@ const Chat = ({ channelId }) => {
         e.preventDefault()
         if (!input) return null;
 
-        await socket.emit("chat", { user: user.username, msg: input, channelId });
+        await socket.emit("chat", { user: user.username, msg: input, channelId: channelId });
 
         const payload = {
             owner_id,
