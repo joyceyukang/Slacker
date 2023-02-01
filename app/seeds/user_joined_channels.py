@@ -7,16 +7,28 @@ def seed_join_table():
     users = User.query.all()
     channels = Channel.query.all()
 
-    def randomChannel():
-        return channels[random.randint(0, len(channels)-1)]
+    # def randomChannel():
+    #     return channels[random.randint(0, len(channels)-1)]
 
-    for user in users:
-        channel = randomChannel()
+    # for user in users:
+    #     channel = randomChannel()
 
-        user.user_channels.append(channel)
+    #     user.user_channels.append(channel)
 
+    #     db.session.add(user)
+    #     db.session.commit()
+
+    users[0].user_channels.append(channels[5])
+    users[1].user_channels.append(channels[4])
+    users[2].user_channels.append(channels[5])
+    users[3].user_channels.append(channels[4])
+    users[4].user_channels.append(channels[3])
+    users[5].user_channels.append(channels[2])
+    users[6].user_channels.append(channels[1])
+    users[7].user_channels.append(channels[0])
+
+    for user in users: 
         db.session.add(user)
-        #  print(user.user_businesses)
         db.session.commit()
 
 
