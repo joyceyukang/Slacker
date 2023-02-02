@@ -84,11 +84,9 @@ const ChannelDetails = () => {
                         <p id='user-number'>{singleChannel.users_joined}</p>
                     </div>
                 </div>
-                <div className='message-container'>
-                </div>
-                <div className="chat-box">
+                
                     <Chat channelId={channelId} />
-                </div>
+
             </div>
         </div>
     )
