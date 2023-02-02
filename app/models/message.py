@@ -35,5 +35,6 @@ class Message(db.Model):
             "id": self.id,
             "owner_id": self.owner_id,
             "channel_id": self.channel_id,
-            "input": self.input
+            "input": self.input,
+            "user": self.user.to_dict()
         }

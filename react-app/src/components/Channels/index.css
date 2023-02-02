@@ -33,7 +33,6 @@
     flex-direction: column;
     height: 100%;
     width: calc(100% - 300px);
-    justify-content: space-between;
     position: relative;
     background-color: rgb(236, 178, 46);
     color: white
@@ -203,4 +202,9 @@ a:visited {
 
 .edit-input {
     padding-left: 40px;
+}
+
+.chat-box {
+    display: flex;
+    flex-direction: column;
 }
