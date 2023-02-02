@@ -20,26 +20,23 @@ const Chat = ({ channelId }) => {
     //These are for the payload
     let owner_id = user.id;
     let channel_id = channel.id;
-
-    useEffect(() => {
-        dispatch(getAllChannelMessages(channel_id))
-    }, [dispatch])
-
+    
     // Use effect creates a websocket connection
     // Joins a channel through the join eventlistener
     useEffect(() => {
-
+        
         console.log('in the use effect')
         // open socket connection
         // create websocket
         socket = io();
-
+        
         socket.emit("join", channel_id)
-
+        
         socket.on("chat", (chat) => {
             dispatch(getAllChannelMessages(channel_id))
         })
-
+        
+        dispatch(getAllChannelMessages(channel_id))
         // when component unmounts, disconnect
         return (() => {
 
