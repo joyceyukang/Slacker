@@ -1,3 +1,11 @@
+.mc-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+    justify-content: space-evenly;
+}
+
 .chat-container {
     display: flex;
     flex-direction: column;
@@ -6,15 +14,20 @@
     color: rgb(65, 30, 65);
 }
 
+.iedb-container {
+    display: flex;
+}
 
 .edbe {
     background-color: transparent;
     border: none;
+    width: 100%;
 }
 
 .edbd {
     background-color: transparent;
     border: none;
+    width: 100%;;
 }
 
 .edbe:hover {
@@ -30,6 +43,7 @@
     flex-direction: column;
     width: 100%;
     align-items: flex-start;
+    height: 60vh;
 }
 
 .semc-mid-container {
@@ -53,8 +67,12 @@
 .unmcedb-container {
     display: flex;
     flex-direction: row;
-    /* justify-content: space-between; */
-    padding: 10px;
+    margin: 10px;
+    padding: 10px 10px 10px 10px;
+    align-items: flex-start;
+    min-height: 25px;
+    /* width: 100%; */
+    position: relative;
 }
 
 .unmcedb-container:hover {
@@ -69,21 +87,12 @@
     overflow-y: hidden;
 }
 
-/* .input-message {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    width: 100%;
-    height: 120px;
-    position: relative; */
-/* } */
-
 .user-guy {
     display: flex;
     margin-top: 5px;
-    margin-right: 10px;
-    width: 40px;
-    height: 40px;
+    margin-right: 20px;
+    width: 30px;
+    height: 30px;
     border: white solid 1px;
     border-radius: 5px;
     justify-content: space-around;
@@ -94,25 +103,37 @@
     font-weight: bold;
 }
 
-.scif-form {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    width: 100%;
+@media screen and (max-width: 3200px) {
+    .scif-container {
+        min-height: 104px;
+    }
 }
 
 .scif-container {
     display: flex;
-    width: 90%;
-    /* padding: 24px 24px; */
-    padding-right: 40px;
+    padding: 0 20px;
+    position: relative;
+    height: 80px;
+}
+
+
+.scif-form {
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+    height: 80px;
+    position: relative;
+}
+
+.input-message {
+    position: relative;
 }
 
 .scif-inner-container {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
     justify-content: center;
     align-items: center;
     width: 100%;
+    height: 100%;
 }

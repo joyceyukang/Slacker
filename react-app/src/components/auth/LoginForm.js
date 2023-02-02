@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
+import './Forms.css'
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -15,9 +16,9 @@ const LoginForm = () => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
+      console.log("does it come in here?", data)
       setErrors(data);
     }
-    history.push('/channels')
   };
 
   const updateEmail = (e) => {
@@ -35,21 +36,24 @@ const LoginForm = () => {
     let demoEmail = 'demo@aa.io'
     let demoPw = 'password'
     const demo = await dispatch(login(demoEmail, demoPw))
-    if (demo) {
-      setErrors(demo);
-    }
+    // if (demo) {
+    //   setErrors(demo);
+    // }
     history.push('/channels')
   }
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/channels' />;
   }
 
   return (
+    <div className='login-wrapper'>
     <form onSubmit={onLogin}>
       <div>
         {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
+          <div key={ind}>
+            {error}
+            </div>
         ))}
       </div>
       <div>
@@ -75,6 +79,7 @@ const LoginForm = () => {
         <button className='single-login' onClick={demoUser}>Demo</button>
       </div>
     </form>
+    </div>
   );
 };
 

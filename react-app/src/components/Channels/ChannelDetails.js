@@ -7,9 +7,7 @@ import { authenticate } from "../../store/session"
 import Chat from "../Socketio/Chat";
 import CreateChannel from "./CreateChannel";
 import OpenModalButton from '../OpenModalButton/index';
-import { io } from 'socket.io-client';
 import './index.css'
-let socket;
 
 const ChannelDetails = () => {
     const dispatch = useDispatch()
@@ -17,7 +15,6 @@ const ChannelDetails = () => {
     const allChannels = Object.values(useSelector(state => state.channel.allChannels))
     const singleChannel = useSelector(state => state.channel.singleChannel)
     const currentUser = useSelector(state => state.session.user)
-    const history = useHistory()
 
     // To display all channels the user has joined or the user owns
     let userChannels;
@@ -36,7 +33,7 @@ const ChannelDetails = () => {
     }
 
     // This use effect is dispatching the user, all channels, and getting one channel for the information. 
-    useEffect( async () => {
+    useEffect(async () => {
         await dispatch(authenticate())
         await dispatch(getAllChannels())
         await dispatch(getOneChannel(channelId))
@@ -63,8 +60,8 @@ const ChannelDetails = () => {
                     />
                 </div>
                 <div className="main-channels">
-                    {userChannels.map(({id, name}) => (
-                            <NavLink className="name" key={id} to={`/channels/${id}`}> #{name} </NavLink>
+                    {userChannels.map(({ id, name }) => (
+                        <NavLink className="name" key={id} to={`/channels/${id}`}> #{name} </NavLink>
                     ))}
                     {channelsOwned.map(({ id, name }) => (
                         <span key={name} className="owners-channels">
@@ -76,16 +73,18 @@ const ChannelDetails = () => {
             <div className="channel-container">
                 <div className="channel-header">
                     <h2 className="upper-left">
-                        <NavLink key={channelId} to={`/channels/${channelId}/info`}> 
-                           #{singleChannel.name}
+                        <NavLink key={channelId} to={`/channels/${channelId}/info`}>
+                            #{singleChannel.name}
                         </NavLink>
                     </h2>
                     <div className="upper=right">
-                        <p id='user-number'>{singleChannel.users_joined}</p>
+                        <p id='user-number'>
+                            {`users: 
+                            ${singleChannel.users_joined}`}</p>
                     </div>
                 </div>
-                
-                    <Chat channelId={channelId} />
+
+                <Chat channelId={channelId} />
 
             </div>
         </div>
