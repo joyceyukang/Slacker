@@ -13,8 +13,8 @@
     height: 100%;
     width: 300px;
     border-right: solid black 1px;
-    background-color: rgb(54, 197, 240);
-    color: white;
+    background-color: rgb(135, 208, 231);
+    color: black;
 }
 
 .title {
@@ -26,6 +26,7 @@
     padding-left: 40px;
     padding-bottom: 20px;
     border-bottom: solid black 1px;
+    margin-bottom: 0;;
 }
 
 .channel-container {
@@ -34,8 +35,8 @@
     height: 100%;
     width: calc(100% - 300px);
     position: relative;
-    background-color: rgb(236, 178, 46);
-    color: white
+    background-color: rgb(232, 199, 125);
+    color: black;
 }
 
 .channel-header {
@@ -48,19 +49,34 @@
     border-bottom: solid black 1px;
 }
 
+.upper-left a:active,
+.upper-left a.active,
+.upper-left a {
+    color: black;
+}
+
+.upper-left a:hover {
+    color: white;
+}
+
 .main-channels {
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding-left: 40px;
+    margin-left: 40px;
 }
+
+.main-channels a:hover {
+   color: white;
+}
+
 
 .name {
     display: flex;
     flex-direction: column;
     margin: 0px;
     background-color: transparent;
-    color: white;
+    color: black;
     border: none;
 }
 .sidebar-container-home {

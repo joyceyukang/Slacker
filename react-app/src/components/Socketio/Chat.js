@@ -56,7 +56,7 @@ const Chat = ({ channelId }) => {
         if (!input) return null;
 
 
-        socket.emit("chat", { user: user.username, msg: input, channel_id: channel_id });
+        await socket.emit("chat", { user: user.username, msg: input, channel_id: channel_id });
 
         const payload = {
             owner_id,
@@ -64,7 +64,7 @@ const Chat = ({ channelId }) => {
             input
         }
 
-        dispatch(createMessage(payload))
+        await dispatch(createMessage(payload))
 
         setInput("")
     }
