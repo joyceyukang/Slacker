@@ -13,20 +13,21 @@ socketio = SocketIO(cors_allowed_origins=origins)
 
 # join room
 @socketio.on("join")
-def join(channelId):
-    print(channelId)
-    join_room(channelId)
-    socketio.emit(' you have entered the room.', to=channelId)
-    print("joined")
+def join(channel_id):
+    print(channel_id)
+    join_room(channel_id)
+    socketio.emit(' you have entered the room.', to=channel_id)
+    # print("joined")
 
 @socketio.on("chat")
 def handle_chat(data):
-    channelId = data["channelId"]
-    join_room(channelId)
-    print("chat sent")
-    socketio.emit("chat", data, room=channelId)
+    # print("HELLO", data)
+    channel_id = data["channel_id"]
+    join_room(channel_id)
+    # print("chat sent")
+    socketio.emit("chat", data, room=channel_id)
 
 @socketio.on("leave")
-def leave(channelId):
-    print("left")
-    leave_room(channelId)
+def leave(channel_id):
+    # print("left")
+    leave_room(channel_id)

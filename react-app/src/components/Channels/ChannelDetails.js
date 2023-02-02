@@ -32,12 +32,14 @@ const ChannelDetails = () => {
         }
     }
 
+    console.log("CHANNEL ID IN CHANNEL DETAILS", channelId)
+
     // This use effect is dispatching the user, all channels, and getting one channel for the information. 
     useEffect(async () => {
         await dispatch(authenticate())
         await dispatch(getAllChannels())
         await dispatch(getOneChannel(channelId))
-        // await  dispatch(getAllChannelMessages(channelId))
+        // await  dispatch(getAllChannelMessages(+channelId))
     }, [dispatch, channelId])
 
     if (!currentUser || !singleChannel || !allChannels) return null

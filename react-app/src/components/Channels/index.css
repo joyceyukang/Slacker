@@ -177,7 +177,7 @@ a:visited {
     background-color: rgb(46, 182, 125);
     border-radius: .25rem;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
-    color: white;
+    color: black;
     display: flex;
     flex-direction: column;
     font-size: 14px;
@@ -204,18 +204,13 @@ a:visited {
     border: none;
     width: 80px;
     height: 30px;
-    color: white;
+    color: black;
 }
 
 .logout:hover {
-   font-weight: bold;
+   color: white;
 }
 
 .edit-input {
     padding-left: 40px;
-}
-
-.chat-box {
-    display: flex;
-    flex-direction: column;
 }

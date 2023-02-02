@@ -47,38 +47,43 @@ const LoginForm = () => {
   }
 
   return (
-    <div className='login-wrapper'>
-    <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>
-            {error}
+    <div className='login-sign-wrapper'>
+      <form className='login-sign-form' onSubmit={onLogin}>
+        <div>
+          {errors.map((error, ind) => (
+            <div key={ind}>
+              {error}
             </div>
-        ))}
-      </div>
-      <div>
-        <label htmlFor='email'>Email</label>
-        <input
-          name='email'
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={updateEmail}
-        />
-      </div>
-      <div>
-        <label htmlFor='password'>Password</label>
-        <input
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type='submit'>Login</button>
-        <button className='single-login' onClick={demoUser}>Demo</button>
-      </div>
-    </form>
+          ))}
+        </div>
+        <div>
+          <label htmlFor='email'>Email</label>
+          <input
+            name='email'
+            type='text'
+            placeholder='Email'
+            value={email}
+            onChange={updateEmail}
+            data-placeholder='Email'
+            />
+        </div>
+        <div>
+          <label htmlFor='password'>Password</label>
+          <input
+            name='password'
+            type='password'
+            placeholder='Password'
+            value={password}
+            onChange={updatePassword}
+            data-placeholder='Password'
+          />
+          <div>
+            <button className='single-login'
+              type='submit'>Login</button>
+            <button className='single-login' onClick={demoUser}>Demo</button>
+          </div>
+        </div>
+      </form>
     </div>
   );
 };
