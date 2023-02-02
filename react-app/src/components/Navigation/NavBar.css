@@ -144,7 +144,7 @@ a:link {
 }
 
 .profile-button:hover {
-    border: solid black 5px;
-    transition-duration: 0.5s;
+    border: solid white;
+    color: white;
 }
 

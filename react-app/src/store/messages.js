@@ -108,16 +108,14 @@ const initialState = { allChannelMessages: {}, singleChannelMessage: {} }
 
 const messages = (state = initialState, action) => {
     let newState;
-    let newAllChannelMessages;
     let newSingleChannelMessage;
     switch (action.type) {
         case LOAD_MESSAGES:
             newState = { ...state };
-            newAllChannelMessages = {...state.allChannelMessages}
+            newState.allChannelMessages = {};
             action.messages.channelMessages.forEach(message => {
-                newAllChannelMessages[message.id] = message;
+                newState.allChannelMessages[message.id] = message;
             })
-            newState.allChannelMessages = newAllChannelMessages;
             return newState;
         case CREATE_MESSAGES:
             newState = { ...state };
@@ -141,10 +139,11 @@ const messages = (state = initialState, action) => {
             // console.log("NEW STATE AFTER UPDATING MESSAGE", newState)
             return newState;
         case DELETE_MESSAGES:
-            newState = {...state};
-            newAllChannelMessages = {...state.allChannelMessages};
-            delete newAllChannelMessages[action.messageId]
-            newState.allChannelMessages = newAllChannelMessages;
+            newState = {
+                allChannelMessages: {...state.allChannelMessages},
+                singleChannelMessage: {...state.singleChannelMessage}
+            };
+            delete newState.allChannelMessages[action.messageId]
             return newState;
         default:
             return state

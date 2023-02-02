@@ -20,23 +20,25 @@ const Chat = ({ channelId }) => {
     //These are for the payload
     let owner_id = user.id;
     let channel_id = channel.id;
-    
+
+    // console.log(+channelId)
+
     // Use effect creates a websocket connection
     // Joins a channel through the join eventlistener
     useEffect(() => {
-        
+
         console.log('in the use effect')
         // open socket connection
         // create websocket
         socket = io();
-        
+
         socket.emit("join", channel_id)
-        
+
         socket.on("chat", (chat) => {
-            dispatch(getAllChannelMessages(channel_id))
+            dispatch(getAllChannelMessages(channelId))
         })
-        
-        dispatch(getAllChannelMessages(channel_id))
+
+        dispatch(getAllChannelMessages(channelId))
         // when component unmounts, disconnect
         return (() => {
 
@@ -48,7 +50,6 @@ const Chat = ({ channelId }) => {
     const updateInput = (e) => {
         setInput(e.target.value)
     };
-
 
     const sendChat = async (e) => {
         e.preventDefault()
@@ -97,53 +98,63 @@ const Chat = ({ channelId }) => {
                             message.channel_id === channel.id && (
                                 <div className="message-container">
                                     {editInputId === message.id ?
-                                        <form
-                                            onSubmit={(e) => {
-                                                e.preventDefault();
+                                        <div className='unmcedb-edit-container'>
+                                            <div>
+                                                <i className="fa-sharp fa-solid fa-user user-guy"></i>
+                                            </div>
+                                            <form
+                                                className="emc-form"
+                                                onSubmit={(e) => {
+                                                    e.preventDefault();
 
-                                                editChat(message.id, editContent)
-                                                setEditInputId("")
-                                            }
-                                            }>
-                                            <input
-                                                className="input-message"
-                                                value={editContent}
-                                                onChange={(e) =>
-                                                    setEditContent(e.target.value)
+                                                    editChat(message.id, editContent)
+                                                    setEditInputId("")
                                                 }
-                                                required
-                                            />
-                                            <button type="submit">Edit</button>
-                                        </form>
+                                                }>
+                                                <input
+                                                    className="input-edit-message"
+                                                    value={editContent}
+                                                    onChange={(e) =>
+                                                        setEditContent(e.target.value)
+                                                    }
+                                                    required
+                                                />
+                                                <button
+                                                className="submit-edit-button"
+                                                type="submit"><i className="fa-solid fa-pen-to-square" /></button>
+                                            </form>
+                                        </div>
                                         :
                                         <div className="unmcedb-container">
-                                            <i className="fa-sharp fa-solid fa-user user-guy"></i>
-                                            <div className="unmc" key={id}>
-                                                <span className="un">
-                                                    {message.user.username}
-                                                </span>
-                                                <span className="mc">
-                                                    {message.input}
-                                                </span>
+                                            <div className="umc-container">
+                                                <div>
+                                                    <i className="fa-sharp fa-solid fa-user user-guy"></i>
+                                                </div>
+                                                <div className="unmc" key={id}>
+                                                    <span className="un">
+                                                        {message.user.username}
+                                                    </span>
+                                                    <span className="mc">
+                                                        {message.input}
+                                                    </span>
+                                                </div>
                                             </div>
-                                            <div className="edb-container">
-                                                {user.id === message.owner_id ? (
-                                                    <div className="iedb-container">
-                                                        <button className="edbe" onClick={() => {
-                                                            setEditInputId(message.id)
-                                                            setEditContent(message.input)
-                                                        }
-                                                        }>
-                                                            <i className="fa-solid fa-pen-to-square" />
-                                                        </button>
-                                                        <button className="edbd" onClick={() => {
-                                                            deleteChat(message.id)
-                                                        }}>
-                                                            <i className="fa-solid fa-trash-can"></i>
-                                                        </button>
-                                                    </div>
-                                                ) : null}
-                                            </div>
+                                            {user.id === message.owner_id ? (
+                                                <div className="iedb-container">
+                                                    <button className="edbe" onClick={() => {
+                                                        setEditInputId(message.id)
+                                                        setEditContent(message.input)
+                                                    }
+                                                    }>
+                                                        <i className="fa-solid fa-pen-to-square" />
+                                                    </button>
+                                                    <button className="edbd" onClick={() => {
+                                                        deleteChat(message.id)
+                                                    }}>
+                                                        <i className="fa-solid fa-trash-can"></i>
+                                                    </button>
+                                                </div>
+                                            ) : <div className="iedb-container"></div>}
                                         </div>
                                     }
                                 </div>
@@ -154,13 +165,15 @@ const Chat = ({ channelId }) => {
             <div className="scif-container">
                 <div className="scif-inner-container">
                     <form className="scif-form" onSubmit={sendChat}>
-                        <input
+                        <textarea
                             className="input-message"
                             value={input}
                             onChange={updateInput}
                             required
                         />
-                        <button type="submit">Send</button>
+                        <button className="scif-submit-button" type="submit">
+                            <i className="fa-regular fa-circle-right"></i>
+                        </button>
                     </form>
                 </div>
             </div>

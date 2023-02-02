@@ -106,6 +106,7 @@ def update_message_by_id(id):
 @login_required
 def delete_message(id):
     current_message = Message.query.get(id)
+    print("USER", current_user.id)
 
     if not current_message:
         return {"errors": "Message not found"}, 404

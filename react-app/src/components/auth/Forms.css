@@ -1,5 +1,11 @@
-.login-wrapper {
+.login-sign-wrapper {
  display: flex;
  flex: 1;
  align-items: center;
+}
+
+.login-sign-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }

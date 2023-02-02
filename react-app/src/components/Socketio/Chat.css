@@ -27,7 +27,8 @@
 .edbd {
     background-color: transparent;
     border: none;
-    width: 100%;;
+    width: 100%;
+    ;
 }
 
 .edbe:hover {
@@ -49,7 +50,7 @@
 .semc-mid-container {
     align-items: flex-start;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     height: 100%;
     width: 100%;
     overflow-y: scroll;
@@ -67,12 +68,12 @@
 .unmcedb-container {
     display: flex;
     flex-direction: row;
-    margin: 10px;
-    padding: 10px 10px 10px 10px;
+    margin: 20px;
+    padding: 10px;
     align-items: flex-start;
     min-height: 25px;
-    /* width: 100%; */
     position: relative;
+    justify-content: space-between;
 }
 
 .unmcedb-container:hover {
@@ -80,23 +81,29 @@
     border-radius: 5px;
 }
 
+.umc-container{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-evenly; */
+    align-items: center;
+}
+
 .unmc {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 100%;
     overflow-y: hidden;
 }
 
 .user-guy {
     display: flex;
-    margin-top: 5px;
-    margin-right: 20px;
     width: 30px;
     height: 30px;
-    border: white solid 1px;
+    border: black solid 1px;
     border-radius: 5px;
     justify-content: space-around;
     align-items: center;
+    margin-right: 5px;
 }
 
 .un {
@@ -119,14 +126,33 @@
 
 .scif-form {
     display: flex;
-    flex-grow: 1;
     width: 100%;
     height: 80px;
     position: relative;
 }
 
+.scif-submit-button {
+    border: none;
+    background-color: transparent;
+    font-size: 30px;
+}
+
+.input-edit-message {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: black solid 2px;
+    outline: none;
+    font-weight: bold;
+}
+
 .input-message {
     position: relative;
+    width: 100%;
+    border: black solid 1px;
+    resize: none;
+    outline: none;
+    padding: 15px 0px 0px 15px
 }
 
 .scif-inner-container {
@@ -136,4 +162,37 @@
     align-items: center;
     width: 100%;
     height: 100%;
+}
+
+.emc-form-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.emc-form {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.submit-edit-button {
+    background-color: transparent;
+    font-weight: bold;
+    border: none;
+}
+
+.submit-edit-button:hover {
+    color: white;
+}
+
+.unmcedb-edit-container {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    padding: 10px;
+    align-items: flex-start;
+    min-height: 25px;
+    position: relative;
 }
