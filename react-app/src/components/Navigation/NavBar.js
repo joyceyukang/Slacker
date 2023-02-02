@@ -18,7 +18,7 @@ const NavBar = ({ loaded }) => {
             </NavLink>
             :
             <NavLink id="nav-bar-main-logo" to='/'>
-              <i class="fa-brands fa-slack"></i>
+              <i className="fa-brands fa-slack"></i>
               <h2>slacker</h2>
             </NavLink>
           }

@@ -3,14 +3,6 @@
     flex-direction: row;
 }
 
-.main-container {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    position: relative;
-}
-
-
 .channel-info-container {
     display: flex;
     flex-direction: column;
