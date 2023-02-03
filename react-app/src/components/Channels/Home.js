@@ -5,7 +5,7 @@ import { getAllChannels, deleteChannel, getOneChannel } from "../../store/channe
 import { authenticate } from "../../store/session";
 import CreateChannel from "./CreateChannel";
 import OpenModalButton from '../OpenModalButton/index';
-import ChannelDetails from "./ChannelDetails";
+import JoinChannels from "./JoinChannels";
 
 const Channel = () => {
     const dispatch = useDispatch()
@@ -51,6 +51,10 @@ const Channel = () => {
                 <h3 className="title">Slacking Academy</h3>
                 <div className="create-channel">
                     <h3>Channels</h3>
+                    <OpenModalButton
+                        buttonText={<i className="fa-solid fa-magnifying-glass"></i>}
+                        modalComponent={<JoinChannels />}
+                    />
                     <OpenModalButton
                         buttonText="+"
                         modalComponent={<CreateChannel />}

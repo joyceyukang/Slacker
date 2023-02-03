@@ -1,19 +1,15 @@
 import { useParams, NavLink, useHistory } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
-import { getAllChannels, deleteChannel, getOneChannel } from "../../store/channels";
+import { useEffect } from "react";
+import { getAllChannels} from "../../store/channels";
 import { authenticate } from "../../store/session";
-import CreateChannel from "./CreateChannel";
-import OpenModalButton from '../OpenModalButton/index';
+import '../../context/Modal.css'
 import './index.css'
 
 const JoinChannels = () => {
     const dispatch = useDispatch()
-    const listChannels = useSelector(state => state.channel.allChannels)
     const allChannels = Object.values(useSelector(state => state.channel.allChannels))
     const currentUser = useSelector(state => state.session.user)
-    const history = useHistory()
-
 
     // List of user channels which are the channels that the user "joined".
     let userChannels;
@@ -41,12 +37,15 @@ const JoinChannels = () => {
 
     const handleAdd = async (id) => {
 
-        const response = await fetch(`/api/users/${id}/favorite`, {
+        const response = await fetch(`/api/users/${id}/join`, {
             method: 'POST',
             headers: { "Content-Type": "application/json" }
         })
         const message = await response.json();
-        if(message) dispatch(authenticate())
+        if(message) {
+            dispatch(authenticate())
+            dispatch(getAllChannels())
+        }
     };
 
     // This use effect will trigger the dispatches for getting all channels and the user information. 
@@ -57,49 +56,27 @@ const JoinChannels = () => {
 
     if (!currentUser || !allChannels) return null
 
-    // The return contains the title of the workspace which will be permanent for now.
-    // Next to the channel subtitle is the create a channel button.
-    // A list of the channels that the user joined and the user owns.
-    // Once you click on a channel in the list it should open up a component to the right that shows the specific channel and the messages.
-    // The above is linked to the component "ChannelDetails".
+    // List of channels to join channels that user has not joined yet
     return (
         <div className="main-container">
-            <div className="sidebar-container">
-                <h3 className="title">Slacking Academy</h3>
-                <div className="create-channel">
-                    <h3>Channels</h3>
-                    <OpenModalButton
-                        buttonText="+"
-                        modalComponent={<CreateChannel />}
-                    />
-                </div>
-                <div className="main-channels">
-                    {userChannels.map(({ id, name }) => (
-                        <NavLink className="name" key={id} to={`/channels/${id}`}> #{name} </NavLink>
-                    ))}
-                    {channelsOwned.map(({ id, name }) => (
-                        <NavLink className="name" key={id} to={`/channels/${id}`}> #{name} </NavLink>
-                    ))}
-                </div>
-            </div>
-            <div className="channel-container">
-                <div className="channel-header">
+            <div className="all-channels-container">
                     <h3 className="upper-left">
                         All Channels
                     </h3>
-                </div>
                 <div className="all-channel-list">
                     {allChannels.map(({ id, name }) => (
                         <div>
-                            <span>
+                            <span className="channel-name">
                               { `#${name}`}
                             </span>
                             <span>
-                                {userChannelsId.includes(id) ?
-                                    <button disabled>
+                                {userChannelsId.includes(id) || channelsOwned.includes(id) ?
+                                    <button className="joined-b"
+                                    disabled>
                                         Joined
                                     </button> :
-                                    <button onClick={() => {
+                                    <button className="join-b" 
+                                    onClick={() => {
                                         handleAdd(id)
                                     }}>
                                         Join

@@ -5,6 +5,7 @@ import { getOneChannel, getAllChannels, deleteChannel } from "../../store/channe
 import { authenticate } from "../../store/session"
 import CreateChannel from "./CreateChannel";
 import EditChannel from "./EditChannel"
+import JoinChannels from "./JoinChannels";
 import OpenModalButton from '../OpenModalButton/index';
 import './index.css'
 import './InfoTab.css'
@@ -73,6 +74,10 @@ const InfoTab = () => {
                 <h3 className="title">Slacking Academy</h3>
                 <div className="create-channel">
                     <h3>Channels</h3>
+                    <OpenModalButton
+                        buttonText={<i className="fa-solid fa-magnifying-glass"></i>}
+                        modalComponent={<JoinChannels />}
+                    />
                     <OpenModalButton
                         buttonText="+"
                         modalComponent={<CreateChannel />}
