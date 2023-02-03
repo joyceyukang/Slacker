@@ -8,11 +8,11 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
-import Channel from './components/Channels';
+import Channel from './components/Channels/Home';
 import ChannelDetails from './components/Channels/ChannelDetails';
-import Chat from './components/Socketio/Chat';
 import EditChannel from './components/Channels/EditChannel';
 import InfoTab from './components/Channels/InfoTab';
+import JoinChannels from './components/Channels/JoinChannels';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -32,30 +32,55 @@ function App() {
 
   return (
     <BrowserRouter>
-    <NavBar loaded={loaded} />
-      <Switch>
-        <Route exact path='/'>
-          the splash page
-        </Route>
-        <Route exact path='/login' >
-          <LoginForm />
-        </Route>
-        <Route exact path='/sign-up' >
-          <SignUpForm />
-        </Route>
-        <ProtectedRoute exact path='/users'  >
-          <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute exact path='/users/:userId'  >
-          <User />
-        </ProtectedRoute>
-        <ProtectedRoute exact path='/channels' component={Channel} />
-        <ProtectedRoute exact path='/channels/:channelId' >
-          <ChannelDetails />
-        </ProtectedRoute>
-        <ProtectedRoute exact path='/channels/:channelId/info' component={InfoTab} />
-        <ProtectedRoute exact path='/channels/:channelId/edit' component={EditChannel} />
-      </Switch>
+      <NavBar loaded={loaded} />
+      {user ?
+        <Switch>
+          {/* <Route exact path='/'>
+              <Channel />
+          </Route> */}
+          <Route exact path='/login' >
+            <LoginForm />
+          </Route>
+          <Route exact path='/sign-up' >
+            <SignUpForm />
+          </Route>
+          <ProtectedRoute exact path='/users'  >
+            <UsersList />
+          </ProtectedRoute>
+          <ProtectedRoute exact path='/users/:userId'  >
+            <User />
+          </ProtectedRoute>
+          <ProtectedRoute exact path='/channels' component={Channel} />
+          <ProtectedRoute exact path='/channels/all-channels' component={JoinChannels} />
+          <ProtectedRoute exact path='/channels/:channelId' component={ChannelDetails} />
+          <ProtectedRoute exact path='/channels/:channelId/info' component={InfoTab} />
+          <ProtectedRoute exact path='/channels/:channelId/edit' component={EditChannel} />
+        </Switch>
+        :
+        <Switch>
+          <Route exact path='/'>
+            the splash page
+          </Route>
+          <Route exact path='/login' >
+            <LoginForm />
+          </Route>
+          <Route exact path='/sign-up' >
+            <SignUpForm />
+          </Route>
+          <ProtectedRoute exact path='/users'  >
+            <UsersList />
+          </ProtectedRoute>
+          <ProtectedRoute exact path='/users/:userId'  >
+            <User />
+          </ProtectedRoute>
+          {/* <ProtectedRoute exact path='/channels' component={Channel} />
+          <ProtectedRoute exact path='/channels/:channelId' >
+            <ChannelDetails />
+          </ProtectedRoute>
+          <ProtectedRoute exact path='/channels/:channelId/info' component={InfoTab} />
+          <ProtectedRoute exact path='/channels/:channelId/edit' component={EditChannel} /> */}
+        </Switch>
+      }
     </BrowserRouter>
   );
 }

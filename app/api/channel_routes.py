@@ -36,7 +36,7 @@ def create_channel():
 
     if form.validate_on_submit():
         current = current_user.to_dict()
-        user = User.query.get(current['id'])
+        # user = User.query.get(current['id'])
         
         new_channel = Channel()
         form.populate_obj(new_channel)
@@ -46,9 +46,10 @@ def create_channel():
         db.session.add(new_channel)
         db.session.commit()
         
-        user.channels_joined.append(new_channel)
-        db.session.add(user)
-        db.session.commit()
+        # possibly don't need 
+        # user.channels_joined.append(new_channel)
+        # db.session.add(user)
+        # db.session.commit()
 
         return new_channel.to_dict(), 201
 

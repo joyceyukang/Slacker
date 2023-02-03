@@ -48,7 +48,7 @@ const Channel = () => {
     return (
         <div className="main-container">
             <div className="sidebar-container">
-                <h2 className="title">Slacking Academy</h2>
+                <h3 className="title">Slacking Academy</h3>
                 <div className="create-channel">
                     <h3>Channels</h3>
                     <OpenModalButton
@@ -61,10 +61,7 @@ const Channel = () => {
                         <NavLink className="name" key={id} to={`/channels/${id}`}> #{name} </NavLink>
                     ))}
                     {channelsOwned.map(({ id, name }) => (
-                        <span key={id} className="owners-channels">
-                            <NavLink className="name" key={name} to={`/channels/${id}`}> #{name}
-                            </NavLink>
-                        </span>
+                        <NavLink className="name" key={id} to={`/channels/${id}`}> #{name} </NavLink>
                     ))}
                 </div>
             </div>

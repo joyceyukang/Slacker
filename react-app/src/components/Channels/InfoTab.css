@@ -9,13 +9,13 @@
     height: 100%;
     width: calc(100% - 300px);
     position: relative;
-    background-color: rgb(232, 199, 125);
+    background-color: rgb(44, 52, 54);
     color: white
 }
 
 .channel-description {
     padding-left: 40px;
-    color: black;
+    color: white;
 }
 
 .edit-delete-buttons {
@@ -24,12 +24,12 @@
 
 .edit {
     margin-right: 10px;
-    color:#4a154b;
+    color:white;
     font-weight: bold;
 }
 
 .delete {
     margin-left: 10px;
-    color:#4a154b;
+    color:white;
     font-weight: bold;
 }

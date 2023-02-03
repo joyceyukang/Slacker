@@ -64,7 +64,6 @@ const LoginForm = () => {
             placeholder='Email'
             value={email}
             onChange={updateEmail}
-            data-placeholder='Email'
             />
         </div>
         <div>
@@ -75,7 +74,6 @@ const LoginForm = () => {
             placeholder='Password'
             value={password}
             onChange={updatePassword}
-            data-placeholder='Password'
           />
           <div>
             <button className='single-login'

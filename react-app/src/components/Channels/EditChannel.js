@@ -133,7 +133,7 @@ const EditChannel = () => {
                     </form>
                 </div>
             </div>
-        // </div>
+         </div>
     )
 }
 

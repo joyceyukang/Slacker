@@ -70,7 +70,7 @@ const InfoTab = () => {
     return (
         <div className="main-container">
             <div className="sidebar-container">
-                <h2 className="title">Slacking Academy</h2>
+                <h3 className="title">Slacking Academy</h3>
                 <div className="create-channel">
                     <h3>Channels</h3>
                     <OpenModalButton
@@ -89,9 +89,9 @@ const InfoTab = () => {
             </div>
             <div className="channel-info-container">
                 <div className="channel-header">
-                    <h2 className="upper-left">
+                    <h3 className="upper-left">
                         #{singleChannel.name}
-                    </h2>
+                    </h3>
                     <div className="upper=right">
                         <p id='user-number'>{singleChannel.users_joined}</p>
                     </div>
