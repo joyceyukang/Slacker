@@ -35,9 +35,7 @@ function App() {
       <NavBar loaded={loaded} />
       {user ?
         <Switch>
-          {/* <Route exact path='/'>
-              <Channel />
-          </Route> */}
+          <ProtectedRoute exact path='/' component={Channel} />
           <Route exact path='/login' >
             <LoginForm />
           </Route>
@@ -50,7 +48,6 @@ function App() {
           <ProtectedRoute exact path='/users/:userId'  >
             <User />
           </ProtectedRoute>
-          <ProtectedRoute exact path='/channels' component={Channel} />
           <ProtectedRoute exact path='/channels/all-channels' component={JoinChannels} />
           <ProtectedRoute exact path='/channels/:channelId' component={ChannelDetails} />
           <ProtectedRoute exact path='/channels/:channelId/info' component={InfoTab} />

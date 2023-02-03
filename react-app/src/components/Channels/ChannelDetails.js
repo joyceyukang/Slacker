@@ -32,7 +32,7 @@ const ChannelDetails = () => {
         }
     }
 
-    console.log("CHANNEL ID IN CHANNEL DETAILS", channelId)
+    // console.log("CHANNEL ID IN CHANNEL DETAILS", channelId)
 
     // This use effect is dispatching the user, all channels, and getting one channel for the information. 
     useEffect(async () => {
@@ -49,7 +49,7 @@ const ChannelDetails = () => {
     // On the right component there will be the name of the channel and the message container below.
     // When clicking on the title, the message container will change to a details page that includes description, edit button and delete button. 
     // When clicking on the edit button, it'll go to a page with the Channel's name and description.
-    // When clicking on the delete button, it should go back to "/channels" page and show that the channel is deleted.
+    // When clicking on the delete button, it should go back to "/" page and show that the channel is deleted.
     return (
         <div className="main-container">
             <div className="sidebar-container">

@@ -46,7 +46,7 @@ const InfoTab = () => {
         e.preventDefault()
 
         dispatch(deleteChannel(channelId)).then(
-            history.push('/channels')
+            history.push('/')
         )
         dispatch(authenticate())
         alert('Channel Deleted')
@@ -107,7 +107,7 @@ const InfoTab = () => {
                     </span>
                     <span>
                         {channelsOwnedId.includes(+channelId) ?
-                            <NavLink className="delete" key={singleChannel.name} onClick={deleteChannels} to='/channels'>Delete</NavLink> : null}
+                            <NavLink className="delete" key={singleChannel.name} onClick={deleteChannels} to='/'>Delete</NavLink> : null}
                     </span>
                 </div>
             </div>

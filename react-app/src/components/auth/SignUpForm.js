@@ -40,7 +40,7 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/channels' />;
+    return <Redirect to='/' />;
   }
 
   return (

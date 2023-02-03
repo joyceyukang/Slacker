@@ -39,11 +39,11 @@ const LoginForm = () => {
     // if (demo) {
     //   setErrors(demo);
     // }
-    history.push('/channels')
+    history.push('/')
   }
 
   if (user) {
-    return <Redirect to='/channels' />;
+    return <Redirect to='/' />;
   }
 
   return (

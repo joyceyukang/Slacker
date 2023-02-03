@@ -25,7 +25,7 @@ export function ModalProvider({ children }) {
     }
     await dispatch(getAllChannels()).then(
       (res) => {
-        <Redirect to='/channels' />
+        <Redirect to='/' />
       }
     )
   };
