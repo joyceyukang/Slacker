@@ -13,6 +13,7 @@ import ChannelDetails from './components/Channels/ChannelDetails';
 import EditChannel from './components/Channels/EditChannel';
 import InfoTab from './components/Channels/InfoTab';
 import JoinChannels from './components/Channels/JoinChannels';
+import SplashPage from './components/SplashPage/Splash';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -36,7 +37,7 @@ function App() {
       {!user ?
         <Switch>
           <Route exact path='/'>
-            the splash page
+            <SplashPage />
           </Route>
           <Route exact path='/login' >
             <LoginForm />

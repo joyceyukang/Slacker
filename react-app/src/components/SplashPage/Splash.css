@@ -1,0 +1,35 @@
+.splash-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.splash-backdrop {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    padding-bottom: 50px;
+    background-color: rgb(194, 150, 220);
+}
+
+.splash-card-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.splash-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 10px;
+    padding: 20px 50px 40px;
+    color: white;
+}
+
+.splash-card img {
+    border-radius: 5px;
+}
