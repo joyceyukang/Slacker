@@ -4,23 +4,22 @@
     text-decoration: none;
     color: white;
     align-items: center;
-    color: black;
+    color: white;
 }
 
 .fa-slack {
     margin-top: 5px;
     margin-right: 10px;
     font-size: x-large;
-    color: black;
+    color: white;
 }
 
 .nav-container {
-    display: flex;
-    flex-direction: column;
+    grid-area: header;
     margin: 0px;
     width: 100%;
-    background-color: #ea9ed1;
-    border-bottom: black .5px solid;
+    background-color: #181717;
+    border-bottom: #49C39E .5px solid;
     z-index: 10;
 }
 
@@ -139,8 +138,8 @@ a:link {
     width: 35px;
     height: 35px;
     background-color: transparent;
-    border: solid black;
-    color: black;
+    border: solid white;
+    color: white;
 }
 
 .profile-button:hover {

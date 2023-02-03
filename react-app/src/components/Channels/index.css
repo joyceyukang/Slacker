@@ -1,95 +1,82 @@
-
 .main-container {
     display: flex;
-    /* flex-direction: row; */
+    overflow: hidden;
     height: 100%;
-    width: 100%;
-    position: relative;
 }
 
 .sidebar-container {
+    color: white;
+    background-color: rgb(26, 28, 28);
+    flex: 0 0 300px;
+    height: 100%;
+}
+
+.channel-container {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 300px;
-    border-right: solid black 1px;
-    background-color: rgb(135, 208, 231);
-    color: black;
+    background-color: rgb(44, 52, 54);
+    border-left: solid #E51670 0.5px;
+    width: 100%;
 }
 
 .title {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    padding-right: 40px;
-    padding-left: 40px;
-    padding-bottom: 20px;
-    border-bottom: solid black 1px;
-    margin-bottom: 0;;
+    padding: 0 0 20px 20px;
+    border-bottom: solid #80D2DE 0.5px;
+    margin-bottom: 0;
 }
 
-.channel-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: calc(100% - 300px);
-    position: relative;
-    background-color: rgb(232, 199, 125);
-    color: black;
-}
 
 .channel-header {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding-right: 40px;
-    padding-left: 20px;
-    border-bottom: solid black 1px;
+    padding: 0 25px;
+    border-bottom: #EBB424 solid 0.5px;
+    color: white;
+}
+
+.channel-name {
+    padding: 5px;
 }
 
 .upper-left a:active,
 .upper-left a.active,
 .upper-left a {
-    color: black;
+    color: white;
 }
 
 .upper-left a:hover {
-    color: white;
+    background-color: rgba(74, 76, 75, 0.5);
 }
 
 .main-channels {
     display: flex;
     flex-direction: column;
     height: 100%;
-    margin-left: 40px;
 }
 
 .main-channels a:hover {
-   color: white;
+   background-color: rgba(74, 76, 75, 0.5);
 }
-
 
 .name {
     display: flex;
     flex-direction: column;
-    margin: 0px;
     background-color: transparent;
-    color: black;
+    color: white;
     border: none;
+    padding: 5px 20px;
 }
+
 .sidebar-container-home {
     display: flex;
     flex-direction: column;
-    /* padding-left: 40px; */
     height: 100%;
-    width: 300px;
     align-items: flex-start;
-}
-
-#workspace {
-    display: flex;
 }
 
 .create-channel {
@@ -97,7 +84,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding-left: 40px;
+    padding-left: 20px;
 }
 
 .loginSign-button {
@@ -113,12 +100,6 @@
     transition: 0.5s;
     background-color: gray;
     border-radius: 5px;
-}
-
-.owners-channels {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
 }
 
 .login-button {
@@ -174,10 +155,10 @@ a:visited {
 .dropdown-menu {
     align-items: center;
     align-content: flex-end;
-    background-color: rgb(46, 182, 125);
+    background-color: rgb(74, 76, 75);
     border-radius: .25rem;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
-    color: black;
+    color: white;
     display: flex;
     flex-direction: column;
     font-size: 14px;
@@ -204,7 +185,7 @@ a:visited {
     border: none;
     width: 80px;
     height: 30px;
-    color: black;
+    color: white;
 }
 
 .logout:hover {
@@ -213,4 +194,8 @@ a:visited {
 
 .edit-input {
     padding-left: 40px;
+}
+
+.user-number {
+    color: white;
 }

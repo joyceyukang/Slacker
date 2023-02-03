@@ -96,7 +96,7 @@ const Chat = ({ channelId }) => {
                     <div className="semc-inner-container">
                         {previousMessageVal.map((message, id) =>
                             message.channel_id === channel.id && (
-                                <div className="message-container">
+                                <div className="single-m-container">
                                     {editInputId === message.id ?
                                         <div className='unmcedb-edit-container'>
                                             <div>
@@ -121,7 +121,7 @@ const Chat = ({ channelId }) => {
                                                 />
                                                 <button
                                                 className="submit-edit-button"
-                                                type="submit"><i className="fa-solid fa-pen-to-square" /></button>
+                                                type="submit">Edit</button>
                                             </form>
                                         </div>
                                         :
@@ -134,7 +134,7 @@ const Chat = ({ channelId }) => {
                                                     <span className="un">
                                                         {message.user.username}
                                                     </span>
-                                                    <span className="mc">
+                                                    <span className="mcontent">
                                                         {message.input}
                                                     </span>
                                                 </div>

@@ -3,13 +3,11 @@
     flex-direction: column;
     position: relative;
     height: 100%;
-    justify-content: space-evenly;
 }
 
 .chat-container {
     display: flex;
     flex-direction: column;
-    /* width: 100%; */
     padding: 30px 30px 30px;
     color: rgb(65, 30, 65);
 }
@@ -22,13 +20,14 @@
     background-color: transparent;
     border: none;
     width: 100%;
+    color: white;
 }
 
 .edbd {
     background-color: transparent;
     border: none;
     width: 100%;
-    ;
+    color: white;
 }
 
 .edbe:hover {
@@ -42,9 +41,10 @@
 .semc-outer-container {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 80%;
     align-items: flex-start;
     height: 60vh;
+    position: relative;
 }
 
 .semc-mid-container {
@@ -52,17 +52,8 @@
     display: flex;
     flex-direction: column-reverse;
     height: 100%;
-    width: 100%;
     overflow-y: scroll;
     padding-bottom: 10px;
-}
-
-.semc-inner-container {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    justify-content: flex-end;
-    width: 100%;
 }
 
 .unmcedb-container {
@@ -73,7 +64,8 @@
     align-items: flex-start;
     min-height: 25px;
     position: relative;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    /* width: 85%; */
 }
 
 .unmcedb-container:hover {
@@ -84,30 +76,38 @@
 .umc-container{
     display: flex;
     flex-direction: row;
-    /* justify-content: space-evenly; */
-    align-items: center;
+    align-items: flex-start;
+    /* width: 70%; */
 }
 
 .unmc {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    overflow-y: hidden;
+    /* width: 80%; */
+    overflow-x: auto;
 }
 
 .user-guy {
     display: flex;
     width: 30px;
     height: 30px;
-    border: black solid 1px;
+    border: white solid 1px;
     border-radius: 5px;
     justify-content: space-around;
     align-items: center;
     margin-right: 5px;
+    margin-top: 3px;
+    color: white;
+}
+
+.mcontent {
+    line-break: anywhere;
+    color: white;
 }
 
 .un {
     font-weight: bold;
+    color: white;;
 }
 
 @media screen and (max-width: 3200px) {
@@ -118,15 +118,16 @@
 
 .scif-container {
     display: flex;
-    padding: 0 20px;
+    padding: 20px;
     position: relative;
     height: 80px;
+    border-top: black solid 1px;
 }
 
 
 .scif-form {
     display: flex;
-    width: 100%;
+    /* width: 75%; */
     height: 80px;
     position: relative;
 }
@@ -152,15 +153,14 @@
     border: black solid 1px;
     resize: none;
     outline: none;
-    padding: 15px 0px 0px 15px
+    padding: 15px 0px 0px 15px;
 }
 
 .scif-inner-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    width: 100%;
+    /* width: 50%; */
     height: 100%;
 }
 
@@ -172,7 +172,7 @@
 .emc-form {
     display: flex;
     flex-direction: row;
-    width: 100%;
+    /* width: 100%; */
     height: 100%;
     border: none;
 }

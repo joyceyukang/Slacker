@@ -40,7 +40,7 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/channels' />;
   }
 
   return (
@@ -58,7 +58,7 @@ const SignUpForm = () => {
             name='username'
             onChange={updateUsername}
             value={username}
-            data-placeholder='Username'
+            placeholder='Username'
             ></input>
         </div>
         <div>
@@ -68,7 +68,7 @@ const SignUpForm = () => {
             name='email'
             onChange={updateEmail}
             value={email}
-            data-placeholder='Email'
+            placeholder='Email'
             ></input>
         </div>
         <div>
@@ -78,7 +78,7 @@ const SignUpForm = () => {
             name='password'
             onChange={updatePassword}
             value={password}
-            data-placeholder='Password'
+            placeholder='Password'
             ></input>
         </div>
         <div>
@@ -89,7 +89,7 @@ const SignUpForm = () => {
             onChange={updateRepeatPassword}
             value={repeatPassword}
             required={true}
-            data-placeholder='Repeat Password'
+            placeholder='Repeat Password'
           ></input>
         </div>
         <button type='submit'>Sign Up</button>
