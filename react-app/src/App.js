@@ -33,7 +33,25 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar loaded={loaded} />
-      {user ?
+      {!user ?
+        <Switch>
+          <Route exact path='/'>
+            the splash page
+          </Route>
+          <Route exact path='/login' >
+            <LoginForm />
+          </Route>
+          <Route exact path='/sign-up' >
+            <SignUpForm />
+          </Route>
+          <ProtectedRoute exact path='/users'  >
+            <UsersList />
+          </ProtectedRoute>
+          <ProtectedRoute exact path='/users/:userId'  >
+            <User />
+          </ProtectedRoute>
+        </Switch>
+        :
         <Switch>
           <ProtectedRoute exact path='/' component={Channel} />
           <Route exact path='/login' >
@@ -52,30 +70,6 @@ function App() {
           <ProtectedRoute exact path='/channels/:channelId' component={ChannelDetails} />
           <ProtectedRoute exact path='/channels/:channelId/info' component={InfoTab} />
           <ProtectedRoute exact path='/channels/:channelId/edit' component={EditChannel} />
-        </Switch>
-        :
-        <Switch>
-          <Route exact path='/'>
-            the splash page
-          </Route>
-          <Route exact path='/login' >
-            <LoginForm />
-          </Route>
-          <Route exact path='/sign-up' >
-            <SignUpForm />
-          </Route>
-          <ProtectedRoute exact path='/users'  >
-            <UsersList />
-          </ProtectedRoute>
-          <ProtectedRoute exact path='/users/:userId'  >
-            <User />
-          </ProtectedRoute>
-          {/* <ProtectedRoute exact path='/channels' component={Channel} />
-          <ProtectedRoute exact path='/channels/:channelId' >
-            <ChannelDetails />
-          </ProtectedRoute>
-          <ProtectedRoute exact path='/channels/:channelId/info' component={InfoTab} />
-          <ProtectedRoute exact path='/channels/:channelId/edit' component={EditChannel} /> */}
         </Switch>
       }
     </BrowserRouter>

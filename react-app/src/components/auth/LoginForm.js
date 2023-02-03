@@ -48,40 +48,50 @@ const LoginForm = () => {
 
   return (
     <div className='login-sign-wrapper'>
-      <form className='login-sign-form' onSubmit={onLogin}>
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>
-              {error}
-            </div>
-          ))}
-        </div>
-        <div>
-          <label htmlFor='email'>Email</label>
-          <input
-            name='email'
-            type='text'
-            placeholder='Email'
-            value={email}
-            onChange={updateEmail}
-            />
-        </div>
-        <div>
-          <label htmlFor='password'>Password</label>
-          <input
-            name='password'
-            type='password'
-            placeholder='Password'
-            value={password}
-            onChange={updatePassword}
-          />
-          <div>
-            <button className='single-login'
-              type='submit'>Login</button>
-            <button className='single-login' onClick={demoUser}>Demo</button>
+      <div className='login-sign-backdrop'>
+        <div className='card-container'>
+          <div className='login-sign-card'>
+            <h2>slacker</h2>
+            <h4>Welcome Back</h4>
+            <form className='login-sign-form' onSubmit={onLogin}>
+              <div>
+                {errors.map((error, ind) => (
+                  <div key={ind}>
+                    {error}
+                  </div>
+                ))}
+              </div>
+              <div>
+                {/* <label htmlFor='email'>Email</label> */}
+                <input
+                  className='login-sign-input'
+                  name='email'
+                  type='text'
+                  placeholder='Email'
+                  value={email}
+                  onChange={updateEmail}
+                />
+              </div>
+              <div>
+                {/* <label htmlFor='password'>Password</label> */}
+                <input
+                  className='login-sign-input'
+                  name='password'
+                  type='password'
+                  placeholder='Password'
+                  value={password}
+                  onChange={updatePassword}
+                />
+              </div>
+              <div className='login-sign-button'>
+                <button className='single-login'
+                  type='submit'>Login</button>
+                <button className='single-login' onClick={demoUser}>Demo</button>
+              </div>
+            </form>
           </div>
         </div>
-      </form>
+      </div>
     </div>
   );
 };

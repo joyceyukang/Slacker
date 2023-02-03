@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useHistory, useParams, NavLink } from 'react-router-dom';
-import channel, { editChannel, getAllChannels, getOneChannel } from '../../store/channels';
+import { editChannel, getAllChannels, getOneChannel } from '../../store/channels';
 import CreateChannel from "./CreateChannel";
+import JoinChannels from './JoinChannels';
 import OpenModalButton from '../OpenModalButton/index';
 
 const EditChannel = () => {
@@ -78,9 +79,13 @@ const EditChannel = () => {
     return (
         <div className="main-container">
             <div className="sidebar-container">
-                <h2 className="title">Slacking Academy</h2>
+                <h3 className="title">Slacking Academy</h3>
                 <div className="create-channel">
                     <h3>Channels</h3>
+                    <OpenModalButton
+                        buttonText={<i className="fa-solid fa-magnifying-glass"></i>}
+                        modalComponent={<JoinChannels />}
+                    />
                     <OpenModalButton
                         buttonText="+"
                         modalComponent={<CreateChannel />}
@@ -100,7 +105,7 @@ const EditChannel = () => {
             <div className='channel-container'>
                 <div className="edit-form">
                     <div className='channel-header'>
-                        <h2 className='upper-left'>#Edit a Channel</h2>
+                        <h3 className='upper-left'>#Edit a Channel</h3>
                     </div>
                     <form className="edit-input" onSubmit={handleSubmit}>
                         <h5>Channel Name</h5>

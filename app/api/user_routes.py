@@ -48,7 +48,7 @@ def user_join_channel(id):
 @login_required
 def delete_favorite(id):
     """
-    Delete the channel from user_channels if they decide to unfavorite it
+    Delete the channel from user_channels if they decide to leave it
     """
     current = current_user.to_dict()
     user = User.query.get(current['id'])
