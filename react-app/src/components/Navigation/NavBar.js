@@ -12,7 +12,7 @@ const NavBar = ({ loaded }) => {
       <div id='upper-navigation'>
         <div className='upper-left-home'>
           {sessionUser ?
-            <NavLink id="nav-bar-main-logo" to='/channels'>
+            <NavLink id="nav-bar-main-logo" to='/'>
               <i className="fa-brands fa-slack"></i>
               <h2>slacker</h2>
             </NavLink>

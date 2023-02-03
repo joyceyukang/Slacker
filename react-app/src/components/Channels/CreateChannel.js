@@ -33,7 +33,7 @@ const CreateChannel = () => {
             dispatch(createChannel(payload)).then(
                 (res) => {
                     closeModal()
-                    history.push(`/channels`)
+                    history.push(`/`)
                 })
         }
         dispatch(getAllChannels())

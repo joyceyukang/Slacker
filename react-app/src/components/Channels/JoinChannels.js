@@ -39,6 +39,16 @@ const JoinChannels = () => {
         }
     }
 
+    const handleAdd = async (id) => {
+
+        const response = await fetch(`/api/users/${id}/favorite`, {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" }
+        })
+        const message = await response.json();
+        if(message) dispatch(authenticate())
+    };
+
     // This use effect will trigger the dispatches for getting all channels and the user information. 
     useEffect(() => {
         dispatch(authenticate())
@@ -89,7 +99,9 @@ const JoinChannels = () => {
                                     <button disabled>
                                         Joined
                                     </button> :
-                                    <button >
+                                    <button onClick={() => {
+                                        handleAdd(id)
+                                    }}>
                                         Join
                                     </button>}
                             </span>
