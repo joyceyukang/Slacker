@@ -10,14 +10,15 @@
     width: calc(100% - 300px);
     position: relative;
     background-color: rgb(44, 52, 54);
-    color: white
+    color: white;
+    border-left: solid #E51670 0.5px;
+    justify-content: flex-start;
 }
 
 .channel-description {
     padding-left: 40px;
     color: white;
     height: 100%;
-    border-left: solid #E51670 0.5px;
 }
 
 .edit-delete-buttons {
@@ -28,10 +29,26 @@
     margin-right: 10px;
     color:white;
     font-weight: bold;
+    border: solid white 1px;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 .delete {
     margin-left: 10px;
     color:white;
     font-weight: bold;
+    border: solid white 1px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.edit:hover {
+    background-color: rgba(85, 87, 86, 0.5);
+    border-radius: 5px;
+}
+
+.delete:hover {
+    background-color: rgba(85, 87, 86, 0.5);
+    border-radius: 5px;
 }

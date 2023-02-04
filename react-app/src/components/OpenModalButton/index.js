@@ -1,6 +1,7 @@
 import React from 'react';
 import { useModal } from '../../context/Modal';
 import { useDispatch } from 'react-redux';
+import './modal.css'
 
 
 function OpenModalButton({

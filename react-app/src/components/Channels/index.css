@@ -39,7 +39,7 @@
     padding: 0 25px;
     border-bottom: #EBB424 solid 0.5px;
     border-left: #49C39E .5px solid;
-    /* color: white; */
+    background-color: rgb(44, 52, 54);
 }
 
 .channel-name {
@@ -90,6 +90,7 @@
     align-items: center;
     padding-left: 20px;
 }
+
 
 a:link {
     text-decoration: none;

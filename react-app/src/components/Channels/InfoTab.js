@@ -76,14 +76,17 @@ const InfoTab = () => {
                 </div>
                 <div className="create-channel">
                     <h3>Channels</h3>
-                    <OpenModalButton
-                        buttonText={<i className="fa-solid fa-magnifying-glass"></i>}
-                        modalComponent={<JoinChannels />}
-                    />
-                    <OpenModalButton
-                        buttonText="+"
-                        modalComponent={<CreateChannel />}
-                    />
+                    <div className="search-create-button">
+                        <OpenModalButton
+                            className="search-create-b"
+                            buttonText={<i className="fa-solid fa-magnifying-glass"></i>}
+                            modalComponent={<JoinChannels />}
+                        />
+                        <OpenModalButton
+                            buttonText={<i className="fa-solid fa-plus"></i>}
+                            modalComponent={<CreateChannel />}
+                        />
+                    </div>
                 </div>
                 <div className="main-channels">
                     {userChannels.map(({ id, name }) => (
@@ -97,25 +100,27 @@ const InfoTab = () => {
             <div className="channel-info-container">
                 <div className="channel-header">
                     <h3 className="upper-left">
-                        #{singleChannel.name}
+                        #{singleChannel.name}{" "}{<i className="fa-solid fa-chevron-down"></i>}
                     </h3>
                     <div className="upper=right">
                         <p id='user-number'>{singleChannel.users_joined}</p>
                     </div>
                 </div>
-                <div className='channel-description'>
-                    <h3>Description</h3>
-                    <p>{singleChannel.description}</p>
-                </div>
-                <div className="edit-delete-buttons">
-                    <span>
-                        {channelsOwnedId.includes(+channelId) ?
-                            <NavLink className="edit" key={channelId} to={`/channels/${channelId}/edit`}>Edit</NavLink> : null}
-                    </span>
-                    <span>
-                        {channelsOwnedId.includes(+channelId) ?
-                            <NavLink className="delete" key={singleChannel.name} onClick={deleteChannels} to='/'>Delete</NavLink> : null}
-                    </span>
+                <div className="cdedb-container">
+                    <div className='channel-description'>
+                        <h3>Description</h3>
+                        <p>{singleChannel.description}</p>
+                    </div>
+                    <div className="edit-delete-buttons">
+                        <span>
+                            {channelsOwnedId.includes(+channelId) ?
+                                <NavLink className="edit" key={channelId} to={`/channels/${channelId}/edit`}>Edit</NavLink> : null}
+                        </span>
+                        <span>
+                            {channelsOwnedId.includes(+channelId) ?
+                                <NavLink className="delete" key={singleChannel.name} onClick={deleteChannels} to='/'>Delete</NavLink> : null}
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>

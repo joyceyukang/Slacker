@@ -1,10 +1,9 @@
-import { useParams, NavLink, useHistory } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getAllChannels} from "../../store/channels";
 import { authenticate } from "../../store/session";
 import '../../context/Modal.css'
-import './index.css'
+import './JoinChannels.css'
 
 const JoinChannels = () => {
     const dispatch = useDispatch()
@@ -60,16 +59,16 @@ const JoinChannels = () => {
     return (
         <div className="main-container">
             <div className="all-channels-container">
-                    <h3 className="upper-left">
+                    <h3 className="acl-header">
                         All Channels
                     </h3>
-                <div className="all-channel-list">
+                <div className="acl-container">
                     {allChannels.map(({ id, name }) => (
-                        <div>
+                        <div className="acl">
                             <span className="channel-name">
                               { `#${name}`}
                             </span>
-                            <span>
+                            <span className="acl-button-container">
                                 {userChannelsId.includes(id) || channelsOwned.includes(id) ?
                                     <button className="joined-b"
                                     disabled>

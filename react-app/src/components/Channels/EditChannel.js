@@ -84,14 +84,17 @@ const EditChannel = () => {
                 </div>
                 <div className="create-channel">
                     <h3>Channels</h3>
-                    <OpenModalButton
-                        buttonText={<i className="fa-solid fa-magnifying-glass"></i>}
-                        modalComponent={<JoinChannels />}
-                    />
-                    <OpenModalButton
-                        buttonText="+"
-                        modalComponent={<CreateChannel />}
-                    />
+                    <div className="search-create-button">
+                        <OpenModalButton
+                            className="search-create-b"
+                            buttonText={<i className="fa-solid fa-magnifying-glass"></i>}
+                            modalComponent={<JoinChannels />}
+                        />
+                        <OpenModalButton
+                            buttonText={<i className="fa-solid fa-plus"></i>}
+                            modalComponent={<CreateChannel />}
+                        />
+                    </div>
                 </div>
                 <div className="main-channels">
                     {userChannels.map(({ id, name }) => (
