@@ -1,0 +1,47 @@
+.all-channels-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 500px;
+    height: 300px;
+}
+
+.acl-container {
+    overflow-y: scroll;
+}
+
+.acl {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+ 
+.acl-header {
+    border-bottom: solid lightgray 1px;
+    width: 100%;
+    padding: 10px;
+    margin: 0;
+}
+
+.join-b {
+    background-color: transparent;
+    color: white;
+    border: solid white 1px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.joined-b {
+    background-color: transparent;
+    color: gray;
+    border: solid white 1px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.join-b:hover {
+    background-color: rgba(85, 87, 86, 0.5);
+    border-radius: 5px;
+    cursor: pointer;
+}

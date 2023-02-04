@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { Redirect, useHistory, useParams } from "react-router-dom";
 import { io } from 'socket.io-client';
 import { createMessage, getAllChannelMessages, deleteMessage, editMessage } from "../../store/messages";
+import { authenticate } from "../../store/session";
 import './Chat.css'
 let socket;
 
@@ -20,22 +21,22 @@ const Chat = ({ channelId }) => {
     //These are for the payload
     let owner_id = user.id;
     let channel_id = channel.id;
-    
+
     // Use effect creates a websocket connection
     // Joins a channel through the join eventlistener
     useEffect(() => {
-        
+
         console.log('in the use effect')
         // open socket connection
         // create websocket
         socket = io();
-        
+
         socket.emit("join", channel_id)
-        
+
         socket.on("chat", (chat) => {
             dispatch(getAllChannelMessages(channelId))
         })
-        
+
         dispatch(getAllChannelMessages(channelId))
         // when component unmounts, disconnect
         return (() => {
@@ -87,6 +88,8 @@ const Chat = ({ channelId }) => {
         socket.emit("chat", { channel_id })
     }
 
+    if (!user) <Redirect to="/login" />
+
     return (user && (
         <div className="mc-container">
             <div className="semc-outer-container">
@@ -97,7 +100,7 @@ const Chat = ({ channelId }) => {
                                 <div className="single-m-container">
                                     {editInputId === message.id ?
                                         <div className='unmcedb-edit-container'>
-                                            <div>
+                                            <div className="user-icon">
                                                 <i className="fa-sharp fa-solid fa-user user-guy"></i>
                                             </div>
                                             <form
@@ -116,16 +119,17 @@ const Chat = ({ channelId }) => {
                                                         setEditContent(e.target.value)
                                                     }
                                                     required
+                                                    maxLength="2000"
                                                 />
-                                                <button
-                                                className="submit-edit-button"
-                                                type="submit">Edit</button>
+                                                <button className="scif-submit-button" type="submit">
+                                                    <i className="fa-regular fa-circle-right"></i>
+                                                </button>
                                             </form>
                                         </div>
                                         :
                                         <div className="unmcedb-container">
                                             <div className="umc-container">
-                                                <div>
+                                                <div className="user-icon">
                                                     <i className="fa-sharp fa-solid fa-user user-guy"></i>
                                                 </div>
                                                 <div className="unmc" key={id}>
@@ -164,6 +168,7 @@ const Chat = ({ channelId }) => {
                 <div className="scif-inner-container">
                     <form className="scif-form" onSubmit={sendChat}>
                         <input
+                            maxLength={2000}
                             className="input-message"
                             value={input}
                             onChange={updateInput}
