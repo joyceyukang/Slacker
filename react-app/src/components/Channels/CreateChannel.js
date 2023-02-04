@@ -64,6 +64,7 @@ const CreateChannel = () => {
                     placeholder="Name"
                     name="name"
                     required
+                    max="50"
                 />
                 <p>{formErrors.name}</p>
                 <h5 className='input-titles'>Description</h5>
@@ -74,6 +75,7 @@ const CreateChannel = () => {
                     placeholder="Description"
                     name="description"
                     required
+                    max="2000"
                 />
                 <p>{formErrors.description}</p>
                 {sessionUser ? <button className="submit" type="submit">Submit</button> :

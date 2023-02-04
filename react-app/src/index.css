@@ -6,6 +6,7 @@ html {
     padding: 0;
     height: 100%;
     overflow: hidden;
+    color: rgb(226, 224, 224);
 }
 
 #root {

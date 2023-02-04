@@ -16,6 +16,8 @@
 .channel-description {
     padding-left: 40px;
     color: white;
+    height: 100%;
+    border-left: solid #E51670 0.5px;
 }
 
 .edit-delete-buttons {

@@ -165,7 +165,7 @@ const Chat = ({ channelId }) => {
             <div className="scif-container">
                 <div className="scif-inner-container">
                     <form className="scif-form" onSubmit={sendChat}>
-                        <textarea
+                        <input
                             className="input-message"
                             value={input}
                             onChange={updateInput}

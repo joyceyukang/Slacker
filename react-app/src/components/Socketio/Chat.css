@@ -3,6 +3,7 @@
     flex-direction: column;
     position: relative;
     height: 100%;
+    border-left: solid #E51670 0.5px;
 }
 
 .chat-container {
@@ -20,22 +21,24 @@
     background-color: transparent;
     border: none;
     width: 100%;
-    color: white;
+    color: rgb(226, 224, 224);
 }
 
 .edbd {
     background-color: transparent;
     border: none;
     width: 100%;
-    color: white;
+    color: rgb(226, 224, 224);
 }
 
 .edbe:hover {
     color: white;
+    cursor: pointer;
 }
 
 .edbd:hover {
     color: white;
+    cursor: pointer;
 }
 
 .semc-outer-container {
@@ -69,7 +72,7 @@
 }
 
 .unmcedb-container:hover {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(74, 76, 75, 0.5);
     border-radius: 5px;
 }
 
@@ -97,17 +100,17 @@
     align-items: center;
     margin-right: 5px;
     margin-top: 3px;
-    color: white;
+    color: rgb(226, 224, 224);
 }
 
 .mcontent {
     line-break: anywhere;
-    color: white;
+    color: rgb(226, 224, 224);
 }
 
 .un {
     font-weight: bold;
-    color: white;;
+    color: rgb(226, 224, 224);
 }
 
 @media screen and (max-width: 3200px) {
@@ -121,14 +124,13 @@
     padding: 20px;
     position: relative;
     height: 80px;
-    border-top: black solid 1px;
+    border-top: #5f225f solid 1px;
 }
 
 
 .scif-form {
     display: flex;
-    /* width: 75%; */
-    height: 80px;
+    height: 50px;
     position: relative;
 }
 
@@ -136,6 +138,18 @@
     border: none;
     background-color: transparent;
     font-size: 30px;
+    padding: 0 15px;
+}
+
+.fa-circle-right {
+    color: rgb(226, 224, 224);
+}
+
+.fa-circle-right:hover {
+    outline: none;
+    border-color: #ffffff;
+    box-shadow: 0 0 10px #ffffff;
+    border-radius: 100%;
 }
 
 .input-edit-message {
@@ -150,17 +164,26 @@
 .input-message {
     position: relative;
     width: 100%;
-    border: black solid 1px;
+    border: lightgray solid 1px;
+    border-radius: 5px;
     resize: none;
     outline: none;
-    padding: 15px 0px 0px 15px;
+    padding: 10px;
+    background-color: rgb(26, 28, 28);
+    color: rgb(226, 224, 224);
+}
+
+.input-message:focus {
+    outline: none;
+    border-color: #ffffff;
+    box-shadow: 0 0 10px #ffffff;
 }
 
 .scif-inner-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* width: 50%; */
+    width: 80%;
     height: 100%;
 }
 
@@ -181,6 +204,7 @@
     background-color: transparent;
     font-weight: bold;
     border: none;
+    /* color: rgb(226, 224, 224); */
 }
 
 .submit-edit-button:hover {

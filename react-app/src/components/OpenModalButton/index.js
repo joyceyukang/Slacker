@@ -1,8 +1,7 @@
 import React from 'react';
 import { useModal } from '../../context/Modal';
 import { useDispatch } from 'react-redux';
-import { getAllChannels } from '../../store/channels';
-import { useEffect } from 'react';
+
 
 function OpenModalButton({
   modalComponent, // component to render inside the modal
@@ -20,7 +19,7 @@ function OpenModalButton({
   };
 
   return (
-    <button className="loginSign-button"onClick={onClick}>{buttonText}</button>
+    <button className="modal-button"onClick={onClick}>{buttonText}</button>
   );
 }
 

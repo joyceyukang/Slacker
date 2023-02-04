@@ -79,7 +79,9 @@ const EditChannel = () => {
     return (
         <div className="main-container">
             <div className="sidebar-container">
-                <h3 className="title">Slacking Academy</h3>
+                <div className="title-container">
+                    <h3 className="title">Slacking Academy</h3>
+                </div>
                 <div className="create-channel">
                     <h3>Channels</h3>
                     <OpenModalButton
@@ -138,7 +140,7 @@ const EditChannel = () => {
                     </form>
                 </div>
             </div>
-         </div>
+        </div>
     )
 }
 
