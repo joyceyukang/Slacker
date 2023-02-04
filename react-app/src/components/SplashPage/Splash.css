@@ -11,7 +11,11 @@
     justify-content: space-evenly;
     width: 100%;
     padding-bottom: 50px;
-    background-color: rgb(194, 150, 220);
+    background: linear-gradient(
+        to top,
+        rgb(255, 241, 247) 0%,
+        rgb(194, 150, 220) 100%
+  );
 }
 
 .splash-card-container {

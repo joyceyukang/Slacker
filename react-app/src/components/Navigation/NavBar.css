@@ -19,7 +19,7 @@
     margin: 0px;
     width: 100%;
     background-color: #181717;
-    border-bottom: #49C39E .5px solid;
+    border-bottom: lightgrey .5px solid;
     z-index: 10;
 }
 
@@ -52,7 +52,7 @@
     justify-content: flex-start;
     align-items: center;
     margin-left: 40px;
-    color: white;
+    color: rgb(226, 224, 224);
     height: 50px;
 }
 
@@ -75,12 +75,14 @@
 }
 
 .login-button:hover{
-    border: 2.5px solid white;
+    background-color: gray;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .signup-button {
-    background-color: white;
-    color: #c5b391;
+    background-color: transparent;
+    color: white;
     border: 1px solid white;
     height: 38px;
     width: 100px;
@@ -90,7 +92,9 @@
 }
 
 .signup-button:hover {
-    border: 2.5px solid #c5b391;
+    background-color: gray;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 a:link {
@@ -140,10 +144,12 @@ a:link {
     background-color: transparent;
     border: solid white;
     color: white;
+    border-radius: 5px;
 }
 
 .profile-button:hover {
-    border: solid white;
-    color: white;
+    background-color: gray;
+    border-radius: 5px;
+    cursor: pointer;
 }
 

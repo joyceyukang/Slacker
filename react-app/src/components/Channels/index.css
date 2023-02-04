@@ -5,7 +5,6 @@
 }
 
 .sidebar-container {
-    color: white;
     background-color: rgb(26, 28, 28);
     flex: 0 0 300px;
     height: 100%;
@@ -15,7 +14,6 @@
     display: flex;
     flex-direction: column;
     background-color: rgb(44, 52, 54);
-    border-left: solid #E51670 0.5px;
     width: 100%;
 }
 
@@ -23,9 +21,13 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 0 0 20px 20px;
+    /* padding: 0 0 20px 20px; */
+}
+
+.title-container {
+    display: flex;
+    padding-left: 20px;
     border-bottom: solid #80D2DE 0.5px;
-    margin-bottom: 0;
 }
 
 
@@ -36,7 +38,8 @@
     justify-content: space-between;
     padding: 0 25px;
     border-bottom: #EBB424 solid 0.5px;
-    color: white;
+    border-left: #49C39E .5px solid;
+    /* color: white; */
 }
 
 .channel-name {
@@ -46,11 +49,12 @@
 .upper-left a:active,
 .upper-left a.active,
 .upper-left a {
-    color: white;
+    color: rgb(226, 224, 224);
 }
 
 .upper-left a:hover {
-    background-color: rgba(74, 76, 75, 0.5);
+    background-color: rgba(85, 87, 86, 0.5);
+    border-radius: 5px;
 }
 
 .main-channels {
@@ -67,7 +71,7 @@
     display: flex;
     flex-direction: column;
     background-color: transparent;
-    color: white;
+    color: rgb(226, 224, 224);
     border: none;
     padding: 5px 20px;
 }
@@ -85,53 +89,6 @@
     justify-content: space-between;
     align-items: center;
     padding-left: 20px;
-}
-
-.loginSign-button {
-    margin-right: 40px;
-    background-color: transparent;
-    color: white;
-    border: none;
-    font-size: 25px;
-}
-
-.loginSign-button:hover {
-    cursor: pointer;
-    transition: 0.5s;
-    background-color: gray;
-    border-radius: 5px;
-}
-
-.login-button {
-    background-color: transparent;
-    color: white;
-    border: 1px solid white;
-    border-radius: 4px;
-    padding: 4px;
-    height: 38px;
-    width: 100px;
-    transition: border 0.5s;
-    font-size: 16px;
-}
-
-.login-button:hover{
-    border: 2.5px solid white;
-}
-
-.signup-button {
-    background-color: white;
-    color: #400d40;
-    border: 1px solid white;
-    height: 38px;
-    width: 100px;
-    border-radius: 4px;
-    padding: 4px;
-    transition: border 0.5s;
-    font-size: 16px;
-}
-
-.signup-button:hover {
-    border: 2.5px solid #400d40;
 }
 
 a:link {
@@ -155,10 +112,10 @@ a:visited {
 .dropdown-menu {
     align-items: center;
     align-content: flex-end;
-    background-color: rgb(74, 76, 75);
+    background-color: rgb(26, 28, 28);
     border-radius: .25rem;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
-    color: white;
+    color: rgb(226, 224, 224);
     display: flex;
     flex-direction: column;
     font-size: 14px;
@@ -185,11 +142,13 @@ a:visited {
     border: none;
     width: 80px;
     height: 30px;
-    color: white;
+    color: rgb(226, 224, 224);
 }
 
 .logout:hover {
-   color: white;
+    background-color: gray;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .edit-input {
