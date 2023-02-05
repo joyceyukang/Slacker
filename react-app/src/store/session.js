@@ -1,3 +1,5 @@
+import { Redirect } from 'react-router-dom';
+
 // constants
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
@@ -22,6 +24,8 @@ export const authenticate = () => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     if (data.errors) {
+      // console.log("SPLASH PAGE ERROR");
+      // console.log(data.errors);
       return;
     }
   
@@ -47,9 +51,9 @@ export const login = (email, password) => async (dispatch) => {
     return null;
   } else if (response.status < 500) {
     const data = await response.json();
-    console.log("does it come in here?", data)
+    // console.log("does it come in here?", data)
     if (data.errors) {
-      console.log(data.errors)
+      // console.log(data.errors)
       return data.errors;
     }
   } else {
@@ -66,6 +70,7 @@ export const logout = () => async (dispatch) => {
   });
 
   if (response.ok) {
+    console.log(response.ok)
     dispatch(removeUser());
   }
 };

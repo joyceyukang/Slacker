@@ -17,6 +17,7 @@ const JoinChannels = () => {
 
     // List of channels owned/created by user.
     let channelsOwned
+    let channelsOwnedId = [];
 
     // If there is a user then we will set userChannels to a list of the channels joined.
     if (currentUser) {
@@ -31,8 +32,15 @@ const JoinChannels = () => {
             channelsOwned = allChannels.filter(channel => (
                 channel.owner_id === currentUser.id
             ))
+
+            channelsOwned.forEach(channel => (
+                channelsOwnedId.push(channel.id)
+            ))
         }
     }
+
+    console.log(channelsOwned)
+    console.log(channelsOwnedId)
 
     const handleAdd = async (id) => {
 
@@ -69,7 +77,7 @@ const JoinChannels = () => {
                               { `#${name}`}
                             </span>
                             <span className="acl-button-container">
-                                {userChannelsId.includes(id) || channelsOwned.includes(id) ?
+                                { channelsOwnedId.includes(id) || userChannelsId.includes(id) ?
                                     <button className="joined-b"
                                     disabled>
                                         Joined

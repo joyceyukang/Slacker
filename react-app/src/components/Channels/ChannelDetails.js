@@ -36,14 +36,14 @@ const ChannelDetails = () => {
     // console.log("CHANNEL ID IN CHANNEL DETAILS", channelId)
 
     // This use effect is dispatching the user, all channels, and getting one channel for the information. 
-    useEffect(async () => {
-        await dispatch(authenticate())
-        await dispatch(getAllChannels())
-        await dispatch(getOneChannel(channelId))
-        // await  dispatch(getAllChannelMessages(+channelId))
+    useEffect(() => {
+         dispatch(authenticate())
+         dispatch(getAllChannels())
+         dispatch(getOneChannel(channelId))
+        //   dispatch(getAllChannelMessages(+channelId))
     }, [dispatch, channelId])
 
-    if (!currentUser) return <Redirect to="/login" />
+    if (!currentUser) <Redirect to="/login" />
     if (!singleChannel || !allChannels) return null
 
     // The return also contains the workspace title.
