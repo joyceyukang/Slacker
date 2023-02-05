@@ -27,14 +27,17 @@ function App() {
     })();
   }, [dispatch]);
 
+  console.log(user)
+
   if (!loaded) {
     return null;
   }
 
-  return (
-    <BrowserRouter>
-      <NavBar loaded={loaded} />
-      {!user ?
+
+  if (!user) {
+    return (
+      <BrowserRouter>
+        <NavBar loaded={loaded} />
         <Switch>
           <Route exact path='/'>
             <SplashPage />
@@ -52,7 +55,13 @@ function App() {
             <User />
           </ProtectedRoute>
         </Switch>
-        :
+      </BrowserRouter>
+    )
+  }
+  else {
+    return (
+      <BrowserRouter>
+        <NavBar loaded={loaded} />
         <Switch>
           <ProtectedRoute exact path='/' component={Channel} />
           <Route exact path='/login' >
@@ -72,9 +81,11 @@ function App() {
           <ProtectedRoute exact path='/channels/:channelId/info' component={InfoTab} />
           <ProtectedRoute exact path='/channels/:channelId/edit' component={EditChannel} />
         </Switch>
-      }
-    </BrowserRouter>
-  );
+
+      </BrowserRouter>
+    )
+  }
+
 }
 
 export default App;

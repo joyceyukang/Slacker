@@ -6,8 +6,15 @@ import { logout } from '../../store/session';
 const LogoutButton = () => {
   const dispatch = useDispatch()
   const onLogout = async (e) => {
-    <Redirect to='/login' />
-    await dispatch(logout());
+    // e.preventDefault()
+    await dispatch(logout())
+    .then(
+      console.log('LOGGED OUT')
+      // <Redirect to='/login' />
+    )
+    .catch(
+      console.log('CATCH ME')
+    )
   };
 
   return <button onClick={onLogout}>Logout</button>;

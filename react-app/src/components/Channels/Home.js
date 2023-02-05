@@ -34,8 +34,8 @@ const Channel = () => {
         // This use effect will trigger the dispatches for getting all channels and the user information. 
         useEffect(() => {
             dispatch(getAllChannels())
-            dispatch(getOneChannel(1))
-            dispatch(authenticate())
+            // dispatch(getOneChannel(1))
+            // dispatch(authenticate())
         }, [dispatch])
         
         if(!currentUser) return <Redirect to="/login" />
