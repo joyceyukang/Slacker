@@ -68,9 +68,13 @@ const EditChannel = () => {
 
         if (!values.name) {
             errors.name = "Name is required."
+        } else if (values.name.length > 20) {
+            errors.name = "Name of channel must be 20 characters or less."
         }
         if (!values.description) {
             errors.description = "Description is required."
+        } else if (values.description.length > 2000) {
+            errors.description = "Description must be 2000 characters or less."
         }
 
         return errors;
@@ -122,7 +126,7 @@ const EditChannel = () => {
                             name="name"
                             required
                         />
-                        <p>{formErrors.name}</p>
+                        <p className='edit-form-errors'>{formErrors.name}</p>
                         <h5>Description</h5>
                         <input
                             type="text"
@@ -132,7 +136,7 @@ const EditChannel = () => {
                             name="description"
                             required
                         />
-                        <p>{formErrors.description}</p>
+                        <p className='edit-form-errors'>{formErrors.description}</p>
                         {sessionUser ? <button className="submit" type="submit" onClick={
                             async e => {
                                 await dispatch(getAllChannels())
