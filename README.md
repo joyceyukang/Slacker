@@ -20,8 +20,8 @@ Live link to [Slacker](https://slacker.onrender.com)
 
 ## Home Page and Channel Page
 
-![Home]()
-![Channel]()
+![Home](https://github.com/joyceyukang/Capstone-Project/blob/main/images/screen1.png)
+![Channel](https://github.com/joyceyukang/Capstone-Project/blob/main/images/screen2.png)
 
 ## Future Implementation
 
