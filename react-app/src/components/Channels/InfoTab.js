@@ -103,7 +103,8 @@ const InfoTab = () => {
                         #{singleChannel.name}{" "}{<i className="fa-solid fa-chevron-down"></i>}
                     </h3>
                     <div className="upper=right">
-                        <p id='user-number'>{singleChannel.users_joined}</p>
+                        <p id='user-number'>{`users: 
+                            ${singleChannel.users_joined}`}</p>
                     </div>
                 </div>
                 <div className="cdedb-container">
@@ -120,6 +121,9 @@ const InfoTab = () => {
                             {channelsOwnedId.includes(+channelId) ?
                                 <NavLink className="delete" key={singleChannel.name} onClick={deleteChannels} to='/'>Delete</NavLink> : null}
                         </span>
+                    </div>
+                    <div>
+
                     </div>
                 </div>
             </div>
