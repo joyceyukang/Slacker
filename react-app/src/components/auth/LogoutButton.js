@@ -8,13 +8,6 @@ const LogoutButton = () => {
   const onLogout = async (e) => {
     // e.preventDefault()
     await dispatch(logout())
-    .then(
-      console.log('LOGGED OUT')
-      // <Redirect to='/login' />
-    )
-    .catch(
-      console.log('CATCH ME')
-    )
   };
 
   return <button onClick={onLogout}>Logout</button>;

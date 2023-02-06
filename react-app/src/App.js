@@ -27,7 +27,7 @@ function App() {
     })();
   }, [dispatch]);
 
-  console.log(user)
+  // console.log(user)
 
   if (!loaded) {
     return null;

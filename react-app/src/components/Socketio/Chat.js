@@ -76,14 +76,14 @@ const Chat = ({ channelId }) => {
         }
         dispatch(editMessage(messageId, payload))
 
-        console.log("EMIT CHAT")
+        // console.log("EMIT CHAT")
         socket.emit("chat", { channel_id })
     }
 
     const deleteChat = (messageId) => {
         dispatch(deleteMessage(messageId))
 
-        console.log("EMIT CHAT")
+        // console.log("EMIT CHAT")
         socket.emit("chat", { channel_id })
     }
 
