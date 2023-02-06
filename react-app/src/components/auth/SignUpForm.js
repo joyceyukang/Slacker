@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
@@ -22,6 +22,13 @@ const SignUpForm = () => {
       }
     }
   };
+
+  useEffect(() => {
+    const errors = []
+    if(password !== repeatPassword) errors.push("Passwords must match")
+    else setErrors([])
+    setErrors(errors)
+  }, [password, repeatPassword])
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -51,7 +58,7 @@ const SignUpForm = () => {
             <h2>slacker</h2>
             <h4>Create an account</h4>
             <form className='login-sign-form' onSubmit={onSignUp}>
-              <div>
+              <div className='login-sign-form-errors'>
                 {errors.map((error, ind) => (
                   <div key={ind}>{error}</div>
                 ))}

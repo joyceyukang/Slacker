@@ -44,9 +44,13 @@ const CreateChannel = () => {
 
         if (!values.name) {
             errors.name = "Name is required."
+        } else if (values.name.length > 20) {
+            errors.name = "Name of channel must be 20 characters or less."
         }
         if (!values.description) {
             errors.description = "Description is required."
+        } else if (values.description.length > 2000) {
+            errors.description = "Description must be 2000 characters or less."
         }
 
         return errors;
@@ -66,7 +70,7 @@ const CreateChannel = () => {
                     required
                     max="50"
                 />
-                <p>{formErrors.name}</p>
+                <p className='login-sign-form-errors'>{formErrors.name}</p>
                 <h5 className='input-titles'>Description</h5>
                 <input
                     type="text"
@@ -77,7 +81,7 @@ const CreateChannel = () => {
                     required
                     max="2000"
                 />
-                <p>{formErrors.description}</p>
+                <p className='login-sign-form-errors'>{formErrors.description}</p>
                 {sessionUser ? <button className="submit" type="submit">Submit</button> :
                     <div><button className="submit" disabled>Submit</button>
                         <p>Must be signed up or logged in to create a spot.</p></div>}

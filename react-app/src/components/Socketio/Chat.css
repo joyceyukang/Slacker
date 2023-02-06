@@ -138,8 +138,20 @@
 
 .scif-form {
     display: flex;
+    flex-direction: column;
     height: 50px;
     position: relative;
+}
+
+.message-length {
+    margin: 0 0 2px 0;
+    font-size: 11px;
+    color: grey;
+}
+
+.input-button-form {
+    display: flex;
+    flex-direction: row;
 }
 
 .scif-submit-button {
@@ -198,7 +210,7 @@
 .scif-inner-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     width: 80%;
     height: 100%;
 }
