@@ -55,6 +55,19 @@ const JoinChannels = () => {
         }
     };
 
+    const handleDelete = async (id) => {
+
+        const response = await fetch(`/api/users/${id}/join`, {
+            method: 'DELETE',
+            headers: { "Content-Type": "application/json" }
+        })
+        const message = await response.json();
+        if(message) {
+            dispatch(authenticate())
+            dispatch(getAllChannels())
+        }
+    };
+
     // This use effect will trigger the dispatches for getting all channels and the user information. 
     useEffect(() => {
         dispatch(authenticate())
@@ -78,9 +91,11 @@ const JoinChannels = () => {
                             </span>
                             <span className="acl-button-container">
                                 { channelsOwnedId.includes(id) || userChannelsId.includes(id) ?
-                                    <button className="joined-b"
-                                    disabled>
-                                        Joined
+                                    <button className="join-b"
+                                    onClick={() => {
+                                        handleDelete(id)
+                                    }}>
+                                        Leave
                                     </button> :
                                     <button className="join-b" 
                                     onClick={() => {
