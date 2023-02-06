@@ -39,8 +39,8 @@ const JoinChannels = () => {
         }
     }
 
-    console.log(channelsOwned)
-    console.log(channelsOwnedId)
+    // console.log(channelsOwned)
+    // console.log(channelsOwnedId)
 
     const handleAdd = async (id) => {
 

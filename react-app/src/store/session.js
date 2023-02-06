@@ -70,7 +70,7 @@ export const logout = () => async (dispatch) => {
   });
 
   if (response.ok) {
-    console.log(response.ok)
+    // console.log(response.ok)
     dispatch(removeUser());
   }
 };
