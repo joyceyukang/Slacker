@@ -11,6 +11,7 @@ const Chat = ({ channelId }) => {
     const [input, setInput] = useState("");
     const [editContent, setEditContent] = useState([]);
     const [editInputId, setEditInputId] = useState("");
+    const [formErrors, setFormErrors] = useState("")
     const user = useSelector(state => state.session.user)
     const dispatch = useDispatch()
 
@@ -25,8 +26,6 @@ const Chat = ({ channelId }) => {
     // Use effect creates a websocket connection
     // Joins a channel through the join eventlistener
     useEffect(() => {
-
-        console.log('in the use effect')
         // open socket connection
         // create websocket
         socket = io();
@@ -46,6 +45,7 @@ const Chat = ({ channelId }) => {
         })
     }, [channel_id, dispatch])
 
+
     const updateInput = (e) => {
         setInput(e.target.value)
     };
@@ -54,7 +54,6 @@ const Chat = ({ channelId }) => {
         e.preventDefault()
 
         if (!input) return null;
-
 
         await socket.emit("chat", { user: user.username, msg: input, channel_id: channel_id });
 
@@ -119,7 +118,7 @@ const Chat = ({ channelId }) => {
                                                         setEditContent(e.target.value)
                                                     }
                                                     required
-                                                    maxLength="2000"
+                                                    maxlength="2000"
                                                 />
                                                 <button className="scif-submit-button" type="submit">
                                                     <i className="fa-regular fa-circle-right"></i>
@@ -167,16 +166,19 @@ const Chat = ({ channelId }) => {
             <div className="scif-container">
                 <div className="scif-inner-container">
                     <form className="scif-form" onSubmit={sendChat}>
-                        <input
-                            maxLength={2000}
-                            className="input-message"
-                            value={input}
-                            onChange={updateInput}
-                            required
-                        />
-                        <button className="scif-submit-button" type="submit">
-                            <i className="fa-regular fa-circle-right"></i>
-                        </button>
+                        <p className="message-length">Maximum character length 2000</p>
+                        <div className="input-button-form">
+                            <input
+                                maxlength="2000"
+                                className="input-message"
+                                value={input}
+                                onChange={updateInput}
+                                required
+                            />
+                            <button className="scif-submit-button" type="submit">
+                                <i className="fa-regular fa-circle-right"></i>
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>

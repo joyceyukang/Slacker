@@ -16,7 +16,6 @@ const LoginForm = () => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
-      console.log("does it come in here?", data)
       setErrors(data);
     }
   };
@@ -54,10 +53,10 @@ const LoginForm = () => {
             <h2>slacker</h2>
             <h4>Welcome Back</h4>
             <form className='login-sign-form' onSubmit={onLogin}>
-              <div>
+              <div className='login-sign-form-errors'>
                 {errors.map((error, ind) => (
                   <div key={ind}>
-                    {error}
+                    {error.split(':')[1]}
                   </div>
                 ))}
               </div>
