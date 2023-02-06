@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
-import { NavLink, useHistory } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import './NavBar'
 
 function ProfileButton({ user }) {
@@ -48,6 +48,12 @@ function ProfileButton({ user }) {
                         <li className='user-info'>{user.email}</li>
                         <li>
                             <button className="logout" onClick={logout}>Log Out</button>
+                        </li>
+                        <li className="about-me">
+                            <span>
+                                Developed by
+                            </span>
+                            <a className="user-link" href="https://github.com/joyceyukang">Joyce Kang</a>
                         </li>
                     </>
                 </div>

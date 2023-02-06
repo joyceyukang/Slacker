@@ -153,3 +153,26 @@ a:link {
     cursor: pointer;
 }
 
+.about-me {
+    display: flex;
+    flex-direction:column;
+    font-size: 12px;
+    width: 100%;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.user-link {
+    color: rgb(186, 0, 186);
+    font-size: 12px;
+    margin-top: 5px;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    padding: 2px;
+}
+
+.user-link:hover {
+    background-color: rgba(128, 128, 128, 0.5);
+    cursor: pointer;
+}
