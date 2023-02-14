@@ -12,9 +12,11 @@
     width: 100%;
     padding-bottom: 50px;
     background: linear-gradient(
-        to top,
-        rgb(255, 241, 247) 0%,
-        rgb(194, 150, 220) 100%
+        to right,
+        /* rgb(255, 165, 165) 0%, */
+        /* rgb(169, 228, 150) 25%, */
+        rgb(219, 175, 244) 0%,
+        rgb(157, 227, 239) 100%
   );
 }
 
