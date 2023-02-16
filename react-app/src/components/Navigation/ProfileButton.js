@@ -50,10 +50,12 @@ function ProfileButton({ user }) {
                             <button className="logout" onClick={logout}>Log Out</button>
                         </li>
                         <li className="about-me">
-                            <span>
-                                Developed by
-                            </span>
-                            <a className="user-link" href="https://github.com/joyceyukang">Joyce Kang</a>
+                            <a className="user-link" href="https://github.com/joyceyukang" target="_blank">
+                            <i className="fa-brands fa-github"></i>
+                            </a>
+                            <a className="user-link" href="https://www.linkedin.com/in/joyce-kang-18b70624b/" target="_blank">
+                            <i className="fa-brands fa-linkedin"></i>
+                            </a>
                         </li>
                     </>
                 </div>

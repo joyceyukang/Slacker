@@ -28,16 +28,18 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
-  const demoUser = async (e) => {
+  const demoUser1 = async (e) => {
     e.preventDefault();
-    // setEmail('demo@aa.io')
-    // setPassword('password')
-    let demoEmail = 'demo@aa.io'
+    let demoEmail = 'demo1@aa.io'
     let demoPw = 'password'
     const demo = await dispatch(login(demoEmail, demoPw))
-    // if (demo) {
-    //   setErrors(demo);
-    // }
+    history.push('/')
+  }
+  const demoUser2 = async (e) => {
+    e.preventDefault();
+    let demoEmail = 'demo2@aa.io'
+    let demoPw = 'password'
+    const demo = await dispatch(login(demoEmail, demoPw))
     history.push('/')
   }
 
@@ -85,7 +87,10 @@ const LoginForm = () => {
               <div className='login-sign-button'>
                 <button className='single-login'
                   type='submit'>Login</button>
-                <button className='single-login' onClick={demoUser}>Demo</button>
+                <div className='demo-buttons'>
+                  <button className='single-login' onClick={demoUser1}>Demo1</button>
+                  <button className='single-login' onClick={demoUser2}>Demo2</button>
+                </div>
               </div>
             </form>
           </div>

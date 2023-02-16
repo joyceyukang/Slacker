@@ -7,18 +7,13 @@ from ..models.db import db
 message_routes = Blueprint('message', __name__)
 
 # GET ALL MESSAGES
-
-
 @message_routes.route('/', methods=['GET'])
 @login_required
 def all_messages():
     messages = Message.query.all()
-    # print('HELLO-----------', Messages)
     return {"messages": [message.to_dict() for message in messages]}
 
 # GET MESSAGE BY CHANNEL ID
-
-
 @message_routes.route('/<int:channelId>/messages')
 @login_required
 def channel_messages(channelId):
@@ -40,15 +35,11 @@ def single_message(id):
     return message.to_dict()
 
 # CREATE MESSAGE
-
-
 @message_routes.route('/new', methods=['POST'])
 @login_required
 def create_message():
     form = MessageForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
-    # print('CURRENT USER ID', current_user.id)
 
     if form.validate_on_submit():
         channelId = form.data['channel_id']
@@ -70,13 +61,10 @@ def create_message():
         }, 400
 
 # UPDATE MESSAGE
-
-
 @message_routes.route('/<int:id>', methods=['PUT'])
 @login_required
 def update_message_by_id(id):
     current_message = Message.query.get(id)
-    print("does it get here?")
     if not current_message:
         return {"errors": "Message not found"}, 404
 
@@ -106,7 +94,6 @@ def update_message_by_id(id):
 @login_required
 def delete_message(id):
     current_message = Message.query.get(id)
-    print("USER", current_user.id)
 
     if not current_message:
         return {"errors": "Message not found"}, 404
