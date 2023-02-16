@@ -6,28 +6,25 @@ from ..models.db import db
 
 channel_routes = Blueprint('channel', __name__)
 
+@channel_routes.route('/slacker.ico', methods=['GET'])
+def favicon():
+    return 'react-app/public/slacker.ico'
+
 # GET ALL CHANNELS
-
-
 @channel_routes.route('/', methods=['GET'])
 @login_required
 def all_channels():
     channels = Channel.query.all()
-    # print('HELLO-----------', channels)
     return {"channels": [channel.to_dict() for channel in channels]}
 
 # GET SINGLE CHANNEL
-
-
 @channel_routes.route('/<int:id>', methods=['GET'])
 @login_required
 def single_channel(id):
     channel = Channel.query.get(id)
     return channel.to_dict()
 
-# CREATE
-
-
+# CREATE A CHANNEL
 @channel_routes.route('/new', methods=['POST'])
 @login_required
 def create_channel():
@@ -35,13 +32,12 @@ def create_channel():
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        current = current_user.to_dict()
+        # current = current_user.to_dict()
         # user = User.query.get(current['id'])
         
         new_channel = Channel()
         form.populate_obj(new_channel)
         new_channel.owner_id = current_user.id
-
 
         db.session.add(new_channel)
         db.session.commit()
@@ -58,9 +54,7 @@ def create_channel():
             "errors": form.errors
         }, 400
 
-# UPDATE
-
-
+# UPDATE A CHANNEL
 @channel_routes.route('/<int:id>', methods=['PUT'])
 @login_required
 def update_channel_by_id(id):
@@ -84,9 +78,7 @@ def update_channel_by_id(id):
             "errors": form.errors
         }, 400
 
-# DELETE
-
-
+# DELETE A CHANNEL
 @channel_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete_channel(id):

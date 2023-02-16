@@ -14,6 +14,7 @@ import EditChannel from './components/Channels/EditChannel';
 import InfoTab from './components/Channels/InfoTab';
 import JoinChannels from './components/Channels/JoinChannels';
 import SplashPage from './components/SplashPage/Splash';
+import PageNotFound from './components/404/404';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -54,6 +55,7 @@ function App() {
           <ProtectedRoute exact path='/users/:userId'  >
             <User />
           </ProtectedRoute>
+          <Route path="*" component={PageNotFound} />
         </Switch>
       </BrowserRouter>
     )
@@ -80,8 +82,8 @@ function App() {
           <ProtectedRoute exact path='/channels/:channelId' component={ChannelDetails} />
           <ProtectedRoute exact path='/channels/:channelId/info' component={InfoTab} />
           <ProtectedRoute exact path='/channels/:channelId/edit' component={EditChannel} />
+          <Route path="*" component={PageNotFound} />
         </Switch>
-
       </BrowserRouter>
     )
   }
