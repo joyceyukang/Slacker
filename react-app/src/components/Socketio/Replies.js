@@ -23,7 +23,7 @@ const Replies = ({ messageId }) => {
         roomId = parseInt(currentMessage[0].id) + parseInt(allChannels.length)
         channel_id = roomId
     } else {
-         
+
     }
     let message_id = messageId
     let owner_id = user.id;
@@ -80,13 +80,13 @@ const Replies = ({ messageId }) => {
             message_id,
             input
         }
-        
+
         dispatch(editReply(messageId, payload))
-        
+
         // console.log("EMIT CHAT")
         socket.emit("chat", { channel_id })
     }
-    
+
     //delete message live
     //change message id
     const deleteChat = (messageId) => {
@@ -117,7 +117,7 @@ const Replies = ({ messageId }) => {
                                 {mainMessage.input}
                             </span>
                         </div>
-                    </div>  
+                    </div>
                     <div className="semc-mid-container">
                         <div className="semc-inner-container">
                             {previousReplies.map((message) =>
