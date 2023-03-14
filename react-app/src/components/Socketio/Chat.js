@@ -95,7 +95,7 @@ const Chat = ({ channelId }) => {
     }
 
     const replyThread = async (messageId) => {
-        if(messageId) {
+        if (messageId) {
             dispatch(getAllMessageReplies(messageId)).then(
                 setReplyId(messageId)
             ).then(
