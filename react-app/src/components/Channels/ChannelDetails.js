@@ -94,7 +94,7 @@ const ChannelDetails = () => {
                             ${singleChannel.users_joined}`}</p>
                     </div>
                 </div>
-                <Chat channelId={channelId} />
+                <Chat key="chat-key" channelId={channelId} />
             </div>
         </div>
     )

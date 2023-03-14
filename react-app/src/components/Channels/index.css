@@ -8,6 +8,7 @@
     background-color: rgb(26, 28, 28);
     flex: 0 0 300px;
     height: 100%;
+    border-right: solid #E51670 0.5px;
 }
 
 .channel-container {
@@ -38,7 +39,7 @@
     justify-content: space-between;
     padding: 0 25px;
     border-bottom: #EBB424 solid 0.5px;
-    border-left: #49C39E .5px solid;
+    /* border-left: #49C39E 1px solid; */
     background-color: rgb(44, 52, 54);
 }
 

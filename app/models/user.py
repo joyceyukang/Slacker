@@ -19,6 +19,9 @@ class User(db.Model, UserMixin):
     channels = db.relationship('Channel', back_populates='user', cascade='all, delete-orphan')
     #  One to many: User has many messages
     messages = db.relationship('Message', back_populates='user', cascade='all, delete-orphan')
+    #  One to many: User has many replies
+    replies = db.relationship('Reply', back_populates='user', cascade='all, delete-orphan')
+
 
     # join table for channels that the user joined
     user_channels = db.relationship("Channel",
