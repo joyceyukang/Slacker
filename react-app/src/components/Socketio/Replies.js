@@ -22,6 +22,8 @@ const Replies = ({ messageId }) => {
         currentMessage.push(mainMessage)
         roomId = parseInt(currentMessage[0].id) + parseInt(allChannels.length)
         channel_id = roomId
+    } else {
+         
     }
     let message_id = messageId
     let owner_id = user.id;
@@ -102,9 +104,7 @@ const Replies = ({ messageId }) => {
     return (
         <div className="everything-container">
             <div className="mc-container">
-                <div className="semc-outer-container">
-                    <div className="mm-outer">
-                    <h4>Reply Thread</h4>
+                <div className="semc-outer-container-2">
                     <div className="mm">
                         <div className="user-icon">
                             <i className="fa-sharp fa-solid fa-user user-guy"></i>
@@ -118,7 +118,6 @@ const Replies = ({ messageId }) => {
                             </span>
                         </div>
                     </div>  
-                    </div>
                     <div className="semc-mid-container">
                         <div className="semc-inner-container">
                             {previousReplies.map((message) =>

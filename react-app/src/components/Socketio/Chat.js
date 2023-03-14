@@ -95,11 +95,16 @@ const Chat = ({ channelId }) => {
     }
 
     const replyThread = async (messageId) => {
-        dispatch(getAllMessageReplies(messageId)).then(
-            setReplyId(messageId)
-        ).then(
+        if(messageId) {
+            dispatch(getAllMessageReplies(messageId)).then(
+                setReplyId(messageId)
+            ).then(
+                setReply(true)
+            )
+        }
+        else {
             setReply(true)
-        )
+        }
     }
 
     if (!user) <Redirect to="/login" />
@@ -143,9 +148,9 @@ const Chat = ({ channelId }) => {
                                             </div>
                                             :
                                             <div
-                                            key="unmcedb-container" className="unmcedb-container">
+                                                key="unmcedb-container" className="unmcedb-container">
                                                 <div key="umc-container" className="umc-container">
-                                                    <div key="icon-user-guy"className="user-icon">
+                                                    <div key="icon-user-guy" className="user-icon">
                                                         <i className="fa-sharp fa-solid fa-user user-guy"></i>
                                                     </div>
                                                     <div className="unmc" key="tbody">
@@ -154,13 +159,19 @@ const Chat = ({ channelId }) => {
                                                         </span>
                                                         <span className="mcontent">
                                                             {message.input}
+                                                        </span>
+                                                        <span className="rt-button">
                                                             {message.replies.length ?
                                                                 <button onClick={() => {
                                                                     replyThread(message.id)
                                                                 }}>
-                                                                    {message.replies.length}replies
+                                                                    {message.replies.length} replies
                                                                 </button> :
-                                                                <div></div>
+                                                                <button onClick={() => {
+                                                                    replyThread(message.id)
+                                                                }}>
+                                                                    reply
+                                                                </button>
                                                             }
                                                         </span>
                                                     </div>
@@ -210,11 +221,17 @@ const Chat = ({ channelId }) => {
             </div>
             <div className="main-ri-container">
                 {reply ?
-                        <div className="r-container">
-                            <Replies key="reply-key" messageId={replyId} />
+                    <div className="r-container">
+                        <div className="mm-outer">
+                            <h3>Thread</h3>
+                            <button onClick={() => {
+                                setReply(false)
+                            }}>X</button>
                         </div>
+                        <Replies key="reply-key" messageId={replyId} />
+                    </div>
                     :
-                    <div></div>
+                    null
                 }
             </div>
         </div>
