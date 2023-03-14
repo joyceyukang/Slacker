@@ -1,53 +1,49 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { createReply, deleteReply, editReply, getAllMessageReplies } from "../../store/replies";
 import { io } from 'socket.io-client';
-import { createMessage, getAllChannelMessages, deleteMessage, editMessage } from "../../store/messages";
-import { getAllMessageReplies } from "../../store/replies";
-import Replies from "./Replies"
 import './Chat.css'
 let socket;
 
-const Chat = ({ channelId }) => {
+const Replies = ({ messageId }) => {
     const [input, setInput] = useState("");
     const [editContent, setEditContent] = useState([]);
     const [editInputId, setEditInputId] = useState("");
-    const [reply, setReply] = useState(false)
-    const [replyId, setReplyId] = useState("")
-    const user = useSelector(state => state.session.user)
     const dispatch = useDispatch();
-    // const [formErrors, setFormErrors] = useState("")
-
-    const previousMessage = useSelector((state) => state.messages.allChannelMessages)
-    const previousMessageVal = Object.values(previousMessage)
-    const channel = useSelector((state) => state.channel.singleChannel)
-
-    //These are for the payload
+    const user = useSelector(state => state.session.user)
+    const previousReplies = Object.values(useSelector((state) => state.replies.allMessageReplies));
+    const allChannels = Object.values(useSelector(state => state.channel.allChannels));
+    const mainMessage = useSelector(state => state.messages.allChannelMessages[messageId]);
+    let currentMessage = []
+    let roomId
+    let channel_id
+    if (mainMessage) {
+        currentMessage.push(mainMessage)
+        roomId = parseInt(currentMessage[0].id) + parseInt(allChannels.length)
+        channel_id = roomId
+    }
+    let message_id = messageId
     let owner_id = user.id;
-    let channel_id = channel.id;
 
-    // Use effect creates a websocket connection
-    // Joins a channel through the join eventlistener
+    // console.log(mainMessage.id)
+    // console.log(allChannels.length)
+    // console.log(roomId)
+
     useEffect(() => {
-        // open socket connection
-        // create websocket
         socket = io();
 
         socket.emit("join", channel_id)
 
         socket.on("chat", (chat) => {
-            dispatch(getAllChannelMessages(channelId))
+            dispatch(getAllMessageReplies(messageId))
         })
 
-        dispatch(getAllChannelMessages(channelId))
-
-        // when component unmounts, disconnect
         return (() => {
-
             socket.emit("leave", channel_id)
             socket.disconnect()
         })
-    }, [channel_id, dispatch])
+    }, [messageId, dispatch])
 
     // sending message content
     const updateInput = (e) => {
@@ -60,62 +56,77 @@ const Chat = ({ channelId }) => {
 
         if (!input) return null;
 
-        await socket.emit("chat", { user: user.username, msg: input, channel_id: channel_id });
+        await socket.emit("chat", { user: user.username, msg: input, channel_id: roomId });
+        let message_id = messageId
 
         const payload = {
             owner_id,
-            channel_id,
+            message_id,
             input
         }
 
-        await dispatch(createMessage(payload))
+        await dispatch(createReply(payload))
 
         setInput("")
     }
 
     //edit message live
+    //change messageId
     const editChat = (messageId, input) => {
         const payload = {
             owner_id,
-            channel_id,
+            message_id,
             input
         }
-        dispatch(editMessage(messageId, payload))
-
+        
+        dispatch(editReply(messageId, payload))
+        
         // console.log("EMIT CHAT")
         socket.emit("chat", { channel_id })
     }
-
+    
     //delete message live
+    //change message id
     const deleteChat = (messageId) => {
-        dispatch(deleteMessage(messageId))
+        dispatch(deleteReply(messageId))
 
         // console.log("EMIT CHAT")
         socket.emit("chat", { channel_id })
-    }
-
-    const replyThread = async (messageId) => {
-        dispatch(getAllMessageReplies(messageId)).then(
-            setReplyId(messageId)
-        ).then(
-            setReply(true)
-        )
     }
 
     if (!user) <Redirect to="/login" />
+    if (!allChannels || !mainMessage) {
+        return null
+    }
 
-    return (user && (
+    return (
         <div className="everything-container">
             <div className="mc-container">
                 <div className="semc-outer-container">
+                    <div className="mm-outer">
+                    <h4>Reply Thread</h4>
+                    <div className="mm">
+                        <div className="user-icon">
+                            <i className="fa-sharp fa-solid fa-user user-guy"></i>
+                        </div>
+                        <div className="unmc">
+                            <span className="un">
+                                {mainMessage.user.username}
+                            </span>
+                            <span className="mcontent">
+                                {mainMessage.input}
+                            </span>
+                        </div>
+                    </div>  
+                    </div>
                     <div className="semc-mid-container">
                         <div className="semc-inner-container">
-                            {previousMessageVal.map((message, id) =>
-                                message.channel_id === channel.id && (
+                            {previousReplies.map((message) =>
+                                message.message_id === mainMessage.id && (
                                     <div className="single-m-container">
                                         {editInputId === message.id ?
-                                            <div key="unmcedb-edit-container" className='unmcedb-edit-container'>
-                                                <div key="icon-guy" className="user-icon">
+                                            <div className='unmcedb-edit-container'>
+                                                <div className="user-icon">
                                                     <i className="fa-sharp fa-solid fa-user user-guy"></i>
                                                 </div>
                                                 <form
@@ -142,26 +153,17 @@ const Chat = ({ channelId }) => {
                                                 </form>
                                             </div>
                                             :
-                                            <div
-                                            key="unmcedb-container" className="unmcedb-container">
-                                                <div key="umc-container" className="umc-container">
-                                                    <div key="icon-user-guy"className="user-icon">
+                                            <div className="unmcedb-container">
+                                                <div className="umc-container">
+                                                    <div className="user-icon">
                                                         <i className="fa-sharp fa-solid fa-user user-guy"></i>
                                                     </div>
-                                                    <div className="unmc" key="tbody">
+                                                    <div className="unmc">
                                                         <span className="un">
                                                             {message.user.username}
                                                         </span>
                                                         <span className="mcontent">
                                                             {message.input}
-                                                            {message.replies.length ?
-                                                                <button onClick={() => {
-                                                                    replyThread(message.id)
-                                                                }}>
-                                                                    {message.replies.length}replies
-                                                                </button> :
-                                                                <div></div>
-                                                            }
                                                         </span>
                                                     </div>
                                                 </div>
@@ -208,19 +210,8 @@ const Chat = ({ channelId }) => {
                     </div>
                 </div>
             </div>
-            <div className="main-ri-container">
-                {reply ?
-                        <div className="r-container">
-                            <Replies key="reply-key" messageId={replyId} />
-                        </div>
-                    :
-                    <div></div>
-                }
-            </div>
         </div>
-    )
     )
 };
 
-
-export default Chat;
+export default Replies

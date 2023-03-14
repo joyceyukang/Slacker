@@ -1,5 +1,3 @@
-import channel from "./channels"
-
 const LOAD_MESSAGES = 'messages/LOAD'
 const CREATE_MESSAGES = 'messages/CREATE'
 const UPDATE_MESSAGES = 'messages/UPDATE'
