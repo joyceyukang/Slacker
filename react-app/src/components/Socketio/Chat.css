@@ -1,13 +1,13 @@
 .everything-container {
     display: flex;
     flex-direction: row;
+    /* border-right: #49C39E .5px solid; */
 }
 .mc-container {
     display: flex;
     flex-direction: column;
     position: relative;
     height: 100%;
-    /* border-left: solid #E51670 0.5px; */
     justify-content: flex-end;
 }
 
@@ -51,8 +51,18 @@
     flex-direction: column;
     /* width: 80%; */
     align-items: flex-start;
-    height: 70vh;
     position: relative;
+    height: 72.5vh;
+    width: 100%;
+}
+
+.semc-outer-container-2 {
+    display: flex;
+    flex-direction: column;
+    /* width: 80%; */
+    align-items: flex-start;
+    position: relative;
+    height: 68vh;
     width: 100%;
 }
 
@@ -216,7 +226,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 80%;
+    width: 100%;
     height: 100%;
 }
 
@@ -257,18 +267,12 @@
     align-content: center;
 }
 
-.main-ri-container {
-    border-left: #49C39E .5px solid;
-    /* overflow-y:scroll;
-    overflow-x:hidden; */
-}
-
 .mm {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     position: sticky;
-    padding: 25px;
+    padding: 20px;
     /* border-bottom: #EBB424 solid 0.5px; */
     background-color: rgb(26, 28, 28);
     z-index: 5;
@@ -276,15 +280,49 @@
 
 .mm-outer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    position: sticky;
+    align-items: center;
+    background-color: #181717;
 }
 
-.mm-outer h4 {
-    font-style: italic;
-    /* border-bottom: lightgrey solid 1px; */
-    width: 100%;
-    text-align: center;
-    padding: 5px;
-    margin: 0;
+.mm-outer button {
+    border: none;
+    position: sticky;
     background-color: #181717;
+    color: rgb(226, 224, 224);
+    padding: 10px;
+    font-weight: bold;
+}
+
+.mm-outer button:hover {
+    cursor: pointer;
+    background-color: rgba(74, 76, 75, 0.5);
+}
+
+.mm-outer h3 {
+    width: 100%;
+    text-align: left;
+    padding: 5px;
+    padding-left: 20px;
+    margin: 0;
+    height: 100%;
+}
+
+.rt-button button {
+    border: none;
+    background-color: transparent;
+    color: rgb(86, 155, 192);
+    text-align: left;
+    padding: 0;
+    z-index: 3;
+}
+
+.rt-button button:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.r-container {
+    border-left: #49C39E .5px solid;
 }
