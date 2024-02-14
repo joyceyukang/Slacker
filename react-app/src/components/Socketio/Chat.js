@@ -16,7 +16,6 @@ const Chat = ({ channelId }) => {
     const [replyId, setReplyId] = useState("")
     const user = useSelector(state => state.session.user)
     const dispatch = useDispatch();
-    // const [formErrors, setFormErrors] = useState("")
 
     const previousMessage = useSelector((state) => state.messages.allChannelMessages)
     const previousMessageVal = Object.values(previousMessage)
